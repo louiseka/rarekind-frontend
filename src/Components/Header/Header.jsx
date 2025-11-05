@@ -1,11 +1,23 @@
 import styles from "./Header.module.css";
 import React from "react";
-
+import SiteNav from "../SiteNav/SiteNav";
 
 function Header() {
   return (
     <div className={styles.wrapper}>
-          <h1>Header</h1>
+      <img
+        src="/images/rarekindlogo.png"
+        alt="RareKind Logo"
+        className={styles.logo}
+      />
+
+      <div>
+        <SiteNav />
+      </div>
+      <div className={styles.userButtons}>
+        <button className={styles.signupButton}>Sign up</button>
+        <button className={styles.loginButton}>Log in</button>
+      </div>
     </div>
   );
 }
