@@ -3,11 +3,17 @@ import CollectionCard from "../../Components/CollectionCard/CollectionCard";
 
 function AllCollectionsPage() {
   return (
-    <div className={styles.wrapper}>
+    <section className={styles.wrapper}>
       <p>All Collections</p>
-      <CollectionCard />
-      <CollectionCard />
-    </div>
+      <div className={styles.grid}>
+        <CollectionCard />
+        <CollectionCard />
+        <CollectionCard />
+        <CollectionCard />
+        <CollectionCard />
+        <CollectionCard />
+      </div>
+    </section>
   );
 }
 
