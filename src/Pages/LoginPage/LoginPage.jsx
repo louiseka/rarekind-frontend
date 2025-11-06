@@ -3,7 +3,7 @@ import LoginForm from '../../Components/LoginForm/LoginForm';
 
 function LoginPage() {
   return (
-    <div className={styles.wrapper}>
+    <div className={styles.backdrop}>
       <LoginForm />
     </div>
   );
