@@ -24,6 +24,7 @@
   --font-weight-light: 300;
 
   /* Border Radius */
+  --border-radius-xs: 6px;
   --border-radius-s: 8px;
   --border-radius-m: 15px;
 }
@@ -35,11 +36,19 @@
 }
 
 /* General Styles */
+
 body {
   font-family: var(--font-family-body);
-  margin: 0;
+  margin: 0 auto;
+  max-width: 1200px;
   padding: 0;
   background-color: var(--color-background-black);
   color: var(--color-text-light-gray);
 }
 
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
