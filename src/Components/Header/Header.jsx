@@ -1,8 +1,11 @@
 import styles from "./Header.module.css";
 import React from "react";
 import SiteNav from "../SiteNav/SiteNav";
+import { Link, useLocation } from "react-router-dom";
 
 function Header() {
+  const location = useLocation();
+
   return (
     <div className={styles.wrapper}>
       <img
@@ -15,8 +18,12 @@ function Header() {
         <SiteNav />
       </div>
       <div className={styles.userButtons}>
-        <button className={styles.signupButton}>Sign up</button>
-        <button className={styles.loginButton}>Log in</button>
+        <Link to="/signup">
+          <button className={styles.signupButton}>Sign up</button>
+        </Link>
+        <Link to="/login">
+          <button className={styles.loginButton}>Log in</button>
+        </Link>
       </div>
     </div>
   );
