@@ -18,11 +18,11 @@ function Header() {
         <SiteNav />
       </div>
       <div className={styles.userButtons}>
-        <Link to="/signup">
-          <button className={styles.signupButton}>Sign up</button>
+        <Link to="/signup" className={styles.userButton}>
+          Sign up
         </Link>
-        <Link to="/login">
-          <button className={styles.loginButton}>Log in</button>
+        <Link to="/login" className={styles.userButton}>
+          Log in
         </Link>
       </div>
     </div>

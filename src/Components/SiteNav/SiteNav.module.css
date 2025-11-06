@@ -7,8 +7,6 @@
   font-weight: var(--font-weight-bold);
   cursor: pointer;
   text-decoration: none;
-  font-family: "lato", sans-serif;
-  font-weight: var(--font-weight-bold);
   font-size: var(--font-size-body);
 }
 .inactiveLink:hover {

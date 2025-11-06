@@ -11,10 +11,10 @@
 }
 
 .logo {
-  height: 100px;
+  height: 120px;
   position: relative;
   left: -15px;
-  top: -10px;
+  top: -5px;
 }
 
 .userButtons {
@@ -23,7 +23,7 @@
   margin: 20px;
 }
 
-button {
+.userButton {
   color: var(--color-text-light-gray);
   background-color: transparent;
   border: none;
@@ -31,6 +31,8 @@ button {
   font-weight: var(--font-weight-bold);
   font-size: var(--font-size-body);
   cursor: pointer;
+  text-decoration: none;
+  padding: 10px;
 }
 
 button:hover {
