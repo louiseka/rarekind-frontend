@@ -13,7 +13,7 @@
 .logo {
   height: 70px;
   position: relative;
- 
+  left: 3px;
 }
 
 .userButtons {
