@@ -20,6 +20,7 @@
 .searchInput:focus,
 .searchInput:active {
   outline: 2px solid var(--color-primary);
+  background-color: transparent;
 }
 
 .searchButton {
