@@ -30,7 +30,7 @@ function NewCollectionForm() {
                     <input
                         type="text"
                         name="species"
-                        placeholder="Enter species..."
+                        placeholder="Enter description..."
                         className={styles.description}
                     />
                 </label>
