@@ -24,6 +24,7 @@ function SiteNav() {
           </NavLink>
         ))}
       </nav>
+      <button className={styles.newCollectionButton}>+ NEW COLLECTION</button>
     </div>
   );
 }
