@@ -2,11 +2,10 @@ import { NavLink, useLocation } from 'react-router-dom'
 import styles from './SiteNav.module.css'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../PopUp/popupSlice'
-import { useNavigate } from 'react-router-dom'
+
 
 function SiteNav() {
     const dispatch = useDispatch()
-    const navigate = useNavigate()
     const location = useLocation()
 
     const navLinks = [
