@@ -53,4 +53,12 @@ p {
         padding-bottom: 20px;
         min-height: 80px;
     }
+
+    .footerLink {
+        margin: 10px 0;
+    }
+
+    .footerSubLink {
+        margin: 10px 0;
+    }
 }
