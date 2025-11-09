@@ -48,5 +48,8 @@ p {
 @media (min-width: 768px) {
     .wrapper {
         border: none;
+        padding: 0;
+        padding-bottom: 20px;
+        min-height: 80px;
     }
 }
