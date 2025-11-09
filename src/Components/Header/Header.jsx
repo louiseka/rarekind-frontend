@@ -2,6 +2,7 @@ import styles from './Header.module.css'
 import React from 'react'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../PopUp/popupSlice'
+import DarkMode from '../DarkMode/DarkMode'
 
 function Header() {
     const dispatch = useDispatch()
@@ -14,10 +15,7 @@ function Header() {
                 className={styles.logo}
             />
             <div className={styles.uiSection}>
-                <label className={styles.switch}>
-                    <input type="checkbox" />
-                    <span className={styles.slider}></span>
-                </label>
+                <DarkMode />
                 <div className={styles.userButtons}>
                     <button
                         className={styles.userButton}
