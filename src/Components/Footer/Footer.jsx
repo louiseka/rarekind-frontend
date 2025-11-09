@@ -11,14 +11,14 @@ function Footer() {
                     target='blank'
                     className={styles.footerLink}
                 >
-                    Front-end Github repo
+                    Front-end repo
                 </Link>
                 <Link
                     to="https://github.com/technative-academy/rarekind-backend"
                     target='blank'
                     className={styles.footerLink}
                 >
-                    Back-end Github repo
+                    Back-end repo
                 </Link>
             </div>
             <div>
