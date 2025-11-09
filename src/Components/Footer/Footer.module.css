@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 150px;
     border-top: 1px solid var(--color-text-dark-gray);
-    padding: 20px;
+    padding: 5px;
 }
 
 .footerLink {
