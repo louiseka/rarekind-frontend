@@ -8,11 +8,11 @@ function SiteNav() {
     const location = useLocation()
 
     const navLinks = [
-       // { label: 'Dashboard', url: '/' },  
+        // { label: 'Dashboard', url: '/' },
         { label: 'All collections', url: '/allcollections' },
         { label: 'My collections', url: '/mycollections' },
-         { label: 'Users', url: '/users' },
-       // { label: 'One of my collections', url: '/oneofmycollections' },
+        { label: 'Users', url: '/users' },
+        { label: 'One of my collections', url: '/oneofmycollections' },
     ]
     return (
         <div className={styles.wrapper}>
