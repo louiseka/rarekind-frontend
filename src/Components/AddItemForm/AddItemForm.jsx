@@ -19,7 +19,7 @@ function AddItemForm() {
             <form className={styles.form}>
                 <label className={styles.label}>
                     Description
-                    <input
+                    <textarea
                         type="text"
                         name="description"
                         placeholder="Enter item description..."
@@ -28,7 +28,7 @@ function AddItemForm() {
                 </label>
                 <label className={styles.label}>
                     Additional notes
-                    <input
+                    <textarea
                         type="text"
                         name="notes"
                         placeholder="Enter additional notes..."
