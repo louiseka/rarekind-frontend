@@ -49,6 +49,7 @@ h2 {
     border: 1px solid var(--color-text-mid-gray);
     border-radius: 4px;
     margin: 10px auto;
+    resize: vertical;
 }
 
 .notes {
@@ -62,6 +63,7 @@ h2 {
     border: 1px solid var(--color-text-mid-gray);
     border-radius: 4px;
     margin: 10px auto;
+    resize: vertical;
 }
 
 
