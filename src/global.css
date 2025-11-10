@@ -4,7 +4,11 @@
     width: 100%;
 }
 
-
+html {
+    scrollbar-gutter: stable;
+    display: flex;
+    justify-content: center;
+}
 
 /* theme overrides */
 
@@ -16,8 +20,7 @@ html.dark-mode {
     --color-text-dark-gray: #555b5f;
     --color-background-black: #1b1c22;
     --color-background-feature: #323338;
-    display: flex;
-    justify-content: center;
+    
 }
 
 html.light-mode {
@@ -29,8 +32,7 @@ html.light-mode {
     --color-background-black: #f2f2f2;
     --color-background-dark: #e2e7f2;
     --color-background-feature: #c1dbfb;
-    display: flex;
-    justify-content: center;
+   
 }
 
 
