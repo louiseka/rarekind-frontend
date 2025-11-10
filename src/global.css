@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
 
+#root {
+  width: 100%;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+}
+
 :root {
   /* Colours */
   --color-primary: #ebd516; /*active link colour too*/
@@ -40,10 +49,17 @@
 body {
   font-family: var(--font-family-body);
   margin: 0 auto;
-  max-width: 1200px;
+  width: 100%;
+  max-width: 1440px;
   padding: 0;
   background-color: var(--color-background-black);
   color: var(--color-text-light-gray);
+}
+
+@media (min-width: 768px) {
+  body {
+    margin: 0 20px;
+  }
 }
 
 h1,

@@ -15,8 +15,12 @@ function Header() {
             />
 
             <div className={styles.userButtons}>
-                <button className={styles.userButton}
-                onClick={() => dispatch(openPopup('signup'))}>Sign up</button>
+                <button
+                    className={styles.userButton}
+                    onClick={() => dispatch(openPopup('signup'))}
+                >
+                    Sign up
+                </button>
                 <button
                     className={styles.userButton}
                     onClick={() => dispatch(openPopup('login'))}
