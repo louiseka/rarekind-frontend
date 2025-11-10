@@ -36,7 +36,8 @@ h2 {
     flex-direction: column;
 }
 
-.emailInput {
+.title {
+    font-family: var(--font-family-body);
     color: var(--color-text-light-gray);
     width: 100%;
     padding: 8px;
@@ -47,7 +48,32 @@ h2 {
     margin: 10px auto;
 }
 
-.passwordInput {
+.description {
+    font-family: var(--font-family-body);
+    color: var(--color-text-light-gray);
+    width: 100%;
+    padding:  16px 8px 16px;
+    font-size: 1rem;
+    background: var(--color-background-black);
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
+.tags {
+    font-family: var(--font-family-body);
+    color: var(--color-text-light-gray);
+    width: 100%;
+    padding:  16px 8px 16px;
+    font-size: 1rem;
+    background: var(--color-background-black);
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
+.species {
+    font-family: var(--font-family-body);
     color: var(--color-text-light-gray);
     width: 100%;
     padding:  16px 8px 16px;
