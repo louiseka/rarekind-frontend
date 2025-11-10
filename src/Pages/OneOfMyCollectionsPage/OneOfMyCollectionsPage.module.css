@@ -45,7 +45,7 @@
 
 .descriptionContainer,
 .tagsContainer {
-    background-color: #25262c;
+    background-color: var(--color-background-dark);
     border-radius: var(--border-radius-s);
 }
 
