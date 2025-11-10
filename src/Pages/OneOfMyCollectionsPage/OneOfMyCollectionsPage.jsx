@@ -42,6 +42,10 @@ function OneOfMyCollectionsPage() {
                         <time dateTime="14:00"> 2:00pm</time>
                     </p>
                 </div>
+                <div>
+                    <button>Edit Collection</button>
+                    <button>Delete Collection</button>
+                </div>
             </div>
         </section>
     )
