@@ -30,20 +30,14 @@ function SiteNav() {
                 ))}
             </nav>
             {(location.pathname === '/allcollections' || location.pathname === '/mycollections') && (
-                <div>
+                
                 <button
                     className={styles.newCollectionButton}
                     onClick={() => dispatch(openPopup('newcollection'))}
                 >
                     + NEW COLLECTION
                 </button>
-                <button
-                    className={styles.newCollectionButton}
-                    onClick={() => dispatch(openPopup('additem'))}
-                >
-                    + ADD ITEM
-                </button>
-                </div>
+                
             )}
         </div>
     )
