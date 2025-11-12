@@ -20,11 +20,11 @@ export default function ToggleButton() {
         <button className={styles.showButton} onClick={handleToggle}>
             {selectedToggle ? (
                 <>
-                    SEE LESS <FaSortUp />
+                    SEE MORE <FaSortDown />
                 </>
             ) : (
                 <>
-                    SEE MORE <FaSortDown />
+                    SEE LESS <FaSortUp />
                 </>
             )}
         </button>

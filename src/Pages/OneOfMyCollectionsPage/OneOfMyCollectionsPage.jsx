@@ -2,7 +2,7 @@ import styles from './OneOfMyCollectionsPage.module.css'
 
 import CollectionDetails from '../../Components/CollectionDetails/CollectionDetails'
 import ItemCard from '../../Components/ItemCard/ItemCard'
-import AddItems from '../../Components/Items/AddItems'
+import AddItems from '../../Components/AddItems/AddItems'
 import ToggleButton from '../../Components/ToggleButton/ToggleButton'
 
 import { useSelector } from 'react-redux'
@@ -12,7 +12,7 @@ function OneOfMyCollectionsPage() {
 
     return (
         <>
-            {selectedToggle && (
+            {!selectedToggle && (
                 <section className={styles.wrapper}>
                     <CollectionDetails />
                 </section>
@@ -20,7 +20,7 @@ function OneOfMyCollectionsPage() {
             <ToggleButton />
 
             <section className={styles.itemContainer}>
-                <AddItems />
+                {/* <AddItems /> */}
                 <div className={styles.grid}>
                     <ItemCard />
                     <ItemCard />
