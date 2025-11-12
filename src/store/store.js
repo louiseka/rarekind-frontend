@@ -9,6 +9,6 @@ export const store = configureStore({
         popup: popupReducer,
         darkmode: darkModeReducer,
         collections: collectionAPISlice,
-        items: itemAPISlice,
+       
     },
 })
