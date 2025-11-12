@@ -5,12 +5,18 @@ import ItemCard from '../../Components/ItemCard/ItemCard'
 import AddItems from '../../Components/Items/AddItems'
 import ToggleButton from '../../Components/ToggleButton/ToggleButton'
 
+import { useSelector } from 'react-redux'
+
 function OneOfMyCollectionsPage() {
+    const selectedToggle = useSelector((state) => state.toggle.selectedToggle)
+
     return (
         <>
-            <section className={styles.wrapper}>
-                <CollectionDetails />
-            </section>
+            {selectedToggle && (
+                <section className={styles.wrapper}>
+                    <CollectionDetails />
+                </section>
+            )}
             <ToggleButton />
 
             <section className={styles.itemContainer}>
