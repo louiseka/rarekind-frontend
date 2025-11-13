@@ -3,8 +3,8 @@ import CollectionCard from '../../Components/CollectionCard/CollectionCard'
 import CollectionSearch from '../../Components/CollectionSearch/CollectionSearch'
 import CollectionFilter from '../../Components/CollectionFilter/CollectionFilter'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
-import { fetchCollections } from '../../API/collectionAPISlice'
+import { useEffect } from 'react'
+import { fetchCollections } from '../../Slices/collectionAPISlice'
 import Loading from '../../Components/Loading/Loading'
 
 function AllCollectionsPage() {
@@ -28,8 +28,6 @@ function AllCollectionsPage() {
             </div>
             {status === 'loading' && <Loading />}
             <div className={styles.grid}>
-               
-                
                 {collections.map((collection) => (
                     <CollectionCard
                         key={collection.id}
