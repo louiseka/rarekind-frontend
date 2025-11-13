@@ -1,19 +1,23 @@
 import authService from './authService'
-// import store from '../store'
+import { store } from '../store/store'
+import { showToast } from '../Slices/toastSlice'
 
 const API_URL = import.meta.env.VITE_API_URL
 
 const makeApiRequest = async (url, options = {}) => {
+    // If headers not set, set as empty object
     options.headers = options.headers || {}
     // Include credentials for cross-origin requests
-    options.credentials = 'include'
+    // options.credentials = 'include'
     options.headers['Content-Type'] = 'application/json'
 
+    //Try and get access token out of session storage
     let accessToken = authService.getAccessToken()
+    // if there is one then it sets the authorisation header
     if (accessToken) {
         options.headers['Authorization'] = `Bearer ${accessToken}`
     }
-
+    // Make the request
     try {
         let response = await fetch(`${API_URL}/${url}`, options)
 
@@ -43,8 +47,8 @@ const makeApiRequest = async (url, options = {}) => {
 
         return await response.json()
     } catch (error) {
-        // store.dispatch(showToast(error.message))
-        // throw error
+        store.dispatch(showToast(error.message))
+        throw error
     }
 }
 
