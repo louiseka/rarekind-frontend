@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchItemsByCollectionId } from '../../API/itemAPISlice'
+import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import Loading from '../../Components/Loading/Loading'
 
 function OneOfMyCollectionsPage() {
@@ -36,7 +36,7 @@ function OneOfMyCollectionsPage() {
             <section className={styles.itemContainer}>
                 {/* <AddItems /> */}
                 <div className={styles.grid}>
-                    {items.map((item) => (
+            {items.map((item) => (
                         <ItemCard key={item.id} item={item} />
                     ))}
                 </div>
