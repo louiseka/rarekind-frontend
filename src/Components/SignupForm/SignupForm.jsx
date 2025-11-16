@@ -1,7 +1,7 @@
 import styles from './SignupForm.module.css'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { closePopup } from '../PopUp/popupSlice'
+import { closePopup } from '../../Slices/popupSlice'
 
 function SignupForm() {
     const dispatch = useDispatch()
