@@ -8,15 +8,27 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
+import { fetchCollections } from '../../Slices/collectionAPISlice'
 import Loading from '../../Components/Loading/Loading'
 
-function OneOfMyCollectionsPage({ collection }) {
+function OneOfMyCollectionsPage() {
     const selectedToggle = useSelector((state) => state.toggle.selectedToggle)
     const dispatch = useDispatch()
     const items = useSelector((state) => state.items.items)
-    const status = useSelector((state) => state.items.status)
+    const itemsStatus = useSelector((state) => state.items.status)
     const error = useSelector((state) => state.items.error)
     const { id } = useParams()
+    const status = useSelector((state) => state.collections.status)
+    const collections = useSelector((state) => state.collections.items)
+
+    console.log(id)
+    console.log(collections)
+
+    useEffect(() => {
+        if (status === 'idle') {
+            dispatch(fetchCollections())
+        }
+    }, [dispatch, status])
 
     useEffect(() => {
         if (id) {
@@ -24,20 +36,26 @@ function OneOfMyCollectionsPage({ collection }) {
         }
     }, [dispatch, id])
 
+    const collectionToShow = collections.find(
+        (c) => String(c.id) === String(id)
+    )
+    console.log(collectionToShow)
+
     return (
         <>
             {!selectedToggle && (
                 <section className={styles.wrapper}>
-                    {collection ? (
-                        <CollectionDetails collection={collection} />
-                    ) : (
-                        <Loading />
+                    {status === 'loading' && <Loading />}
+                    {status === 'succeeded' && (
+                        <CollectionDetails
+                            collectionToShow={collectionToShow}
+                        />
                     )}
                 </section>
             )}
 
             <ToggleButton />
-            {status === 'loading' && <Loading />}
+            {itemsStatus === 'loading' && <Loading />}
             <section className={styles.itemContainer}>
                 {/* <AddItems /> */}
                 <div className={styles.grid}>
