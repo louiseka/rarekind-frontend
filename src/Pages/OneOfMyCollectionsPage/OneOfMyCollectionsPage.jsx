@@ -9,8 +9,11 @@ import { useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
+import {
+    setCollectionName,
+    clearCollectionName,
+} from '../../Slices/navbarSlice'
 import Loading from '../../Components/Loading/Loading'
-
 
 function OneOfMyCollectionsPage() {
     const selectedToggle = useSelector((state) => state.toggle.selectedToggle)
@@ -21,7 +24,9 @@ function OneOfMyCollectionsPage() {
     const { id } = useParams()
     const status = useSelector((state) => state.collections.status)
     const collections = useSelector((state) => state.collections.items)
-
+    const collectionToShow = collections.find(
+        (c) => String(c.id) === String(id)
+    )
 
     useEffect(() => {
         if (status === 'idle') {
@@ -35,10 +40,14 @@ function OneOfMyCollectionsPage() {
         }
     }, [dispatch, id])
 
-    const collectionToShow = collections.find(
-        (c) => String(c.id) === String(id)
-    )
-    
+    useEffect(() => {
+        if (collectionToShow) {
+            dispatch(setCollectionName(collectionToShow.name))
+        } else {
+            dispatch(clearCollectionName())
+        }
+        return () => dispatch(clearCollectionName())
+    }, [dispatch, collectionToShow])
 
     return (
         <>
