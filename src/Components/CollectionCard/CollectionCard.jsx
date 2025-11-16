@@ -2,17 +2,28 @@ import styles from './CollectionCard.module.css'
 import { Link } from 'react-router-dom'
 
 export default function CollectionCard({ collection }) {
+
+     const formatDateTime = (value) => {
+        if (!value) return '—'
+        const d = new Date(value)
+        if (Number.isNaN(d.getTime())) return '—'
+        return new Intl.DateTimeFormat(undefined, {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+        }).format(d)
+    }
+
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <h3 className={styles.cardHeader}>{collection.name}</h3>
             <p className={styles.cardTag}>TAG</p>
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Created:</span>{' '}
-                <time dateTime="14:00"> {collection.date_created}</time>
+                <time dateTime="14:00"> {formatDateTime(collection.date_created)}</time>
             </p>
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Last updated:</span>{' '}
-                <time> {collection.date_updated}</time>
+                <time> {formatDateTime(collection.date_updated)}</time>
             </p>
         </Link>
     )

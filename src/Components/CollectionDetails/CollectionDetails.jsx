@@ -1,8 +1,18 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 
-export default function CollectionDetails({collectionToShow}) {
-    
+export default function CollectionDetails({ collectionToShow }) {
+
+    const formatDateTime = (value) => {
+        if (!value) return '—'
+        const d = new Date(value)
+        if (Number.isNaN(d.getTime())) return '—'
+        return new Intl.DateTimeFormat(undefined, {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+        }).format(d)
+    }
+
     return (
         <div className={styles.collectionContainer}>
             <h2 className={styles.pageTitle}>{collectionToShow.name} </h2>
@@ -30,12 +40,15 @@ export default function CollectionDetails({collectionToShow}) {
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime="14:00"> 2:00pm</time>
+                    <time dateTime={collectionToShow.date_created}>
+                        {formatDateTime(collectionToShow.date_created)}
+                    </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
-
-                    <time dateTime="14:00"> 2:00pm</time>
+                    <time dateTime={collectionToShow.date_updated}>
+                        {formatDateTime(collectionToShow.date_updated)}
+                    </time>
                 </p>
             </div>
             <div className={styles.buttonContainer}>
