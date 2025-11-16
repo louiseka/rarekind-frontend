@@ -1,7 +1,7 @@
 import styles from './Header.module.css'
 import React from 'react'
 import { useDispatch } from 'react-redux'
-import { openPopup } from '../PopUp/popupSlice'
+import { openPopup } from '../../Slices/popupSlice'
 import DarkMode from '../DarkMode/DarkMode'
 
 function Header() {

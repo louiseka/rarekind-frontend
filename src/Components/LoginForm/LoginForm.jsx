@@ -1,6 +1,6 @@
 import styles from './LoginForm.module.css'
 import { useDispatch } from 'react-redux'
-import { closePopup } from '../PopUp/popupSlice'
+import { closePopup } from '../../Slices/popupSlice'
 
 function LoginForm() {
     const dispatch = useDispatch()
