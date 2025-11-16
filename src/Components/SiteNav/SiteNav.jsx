@@ -1,7 +1,7 @@
 import { NavLink, useLocation } from 'react-router-dom'
 import styles from './SiteNav.module.css'
 import { useDispatch } from 'react-redux'
-import { openPopup } from '../PopUp/popupSlice'
+import { openPopup } from '../../Slices/popupSlice'
 
 function SiteNav() {
     const dispatch = useDispatch()
@@ -29,15 +29,14 @@ function SiteNav() {
                     </NavLink>
                 ))}
             </nav>
-            {(location.pathname === '/allcollections' || location.pathname === '/mycollections') && (
-                
+            {(location.pathname === '/allcollections' ||
+                location.pathname === '/mycollections') && (
                 <button
                     className={styles.newCollectionButton}
                     onClick={() => dispatch(openPopup('newcollection'))}
                 >
                     + NEW COLLECTION
                 </button>
-                
             )}
         </div>
     )

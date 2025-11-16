@@ -1,6 +1,6 @@
 import styles from './AddItemForm.module.css'
 import { useDispatch } from 'react-redux'
-import { closePopup } from '../PopUp/popupSlice'
+import { closePopup } from '../../Slices/popupSlice'
 import { FaTrashCan } from "react-icons/fa6";
 
 function AddItemForm() {

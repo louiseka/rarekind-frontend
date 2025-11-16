@@ -1,6 +1,6 @@
 import styles from './NewCollectionForm.module.css'
 import { useDispatch } from 'react-redux'
-import { closePopup } from '../PopUp/popupSlice'
+import { closePopup } from '../../Slices/popupSlice'
 
 function NewCollectionForm() {
     const dispatch = useDispatch()

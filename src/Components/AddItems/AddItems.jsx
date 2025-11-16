@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { openPopup } from '../PopUp/popupSlice'
+import { openPopup } from '../../Slices/popupSlice'
 import styles from './AddItems.module.css'
 
 import { FaInbox, FaPlus } from 'react-icons/fa6'

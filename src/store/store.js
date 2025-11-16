@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import popupReducer from '../Components/PopUp/popupSlice'
+import popupReducer from '../Slices/popupSlice'
 import darkModeReducer from '../Slices/darkModeSlice'
 import collectionReducer from '../Slices/collectionAPISlice'
 import authReducer from '../Slices/authSlice'
@@ -18,4 +18,3 @@ export const store = configureStore({
         toggle: toggleReducer,
     },
 })
-
