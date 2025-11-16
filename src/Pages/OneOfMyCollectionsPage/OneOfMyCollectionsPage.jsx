@@ -21,8 +21,6 @@ function OneOfMyCollectionsPage() {
     const status = useSelector((state) => state.collections.status)
     const collections = useSelector((state) => state.collections.items)
 
-    console.log(id)
-    console.log(collections)
 
     useEffect(() => {
         if (status === 'idle') {
@@ -39,7 +37,7 @@ function OneOfMyCollectionsPage() {
     const collectionToShow = collections.find(
         (c) => String(c.id) === String(id)
     )
-    console.log(collectionToShow)
+    
 
     return (
         <>

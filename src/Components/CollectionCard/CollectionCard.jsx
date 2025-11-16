@@ -3,15 +3,7 @@ import { Link } from 'react-router-dom'
 
 export default function CollectionCard({ collection }) {
 
-     const formatDateTime = (value) => {
-        if (!value) return '—'
-        const d = new Date(value)
-        if (Number.isNaN(d.getTime())) return '—'
-        return new Intl.DateTimeFormat(undefined, {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-        }).format(d)
-    }
+  
 
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
@@ -19,11 +11,11 @@ export default function CollectionCard({ collection }) {
             <p className={styles.cardTag}>TAG</p>
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Created:</span>{' '}
-                <time dateTime="14:00"> {formatDateTime(collection.date_created)}</time>
+                <time dateTime="14:00">  {new Date(collection.date_created).toLocaleString()}</time>
             </p>
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Last updated:</span>{' '}
-                <time> {formatDateTime(collection.date_updated)}</time>
+                <time> {new Date(collection.date_updated).toLocaleString()}</time>
             </p>
         </Link>
     )

@@ -3,15 +3,6 @@ import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 
 export default function CollectionDetails({ collectionToShow }) {
 
-    const formatDateTime = (value) => {
-        if (!value) return '—'
-        const d = new Date(value)
-        if (Number.isNaN(d.getTime())) return '—'
-        return new Intl.DateTimeFormat(undefined, {
-            dateStyle: 'medium',
-            timeStyle: 'short',
-        }).format(d)
-    }
 
     return (
         <div className={styles.collectionContainer}>
@@ -40,14 +31,12 @@ export default function CollectionDetails({ collectionToShow }) {
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime={collectionToShow.date_created}>
-                        {formatDateTime(collectionToShow.date_created)}
-                    </time>
+                    <time dateTime={collectionToShow.date_created}> {new Date(collectionToShow.date_created).toLocaleString()} </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
                     <time dateTime={collectionToShow.date_updated}>
-                        {formatDateTime(collectionToShow.date_updated)}
+                        {new Date(collectionToShow.date_updated).toLocaleString()}
                     </time>
                 </p>
             </div>
