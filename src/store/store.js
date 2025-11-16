@@ -6,6 +6,7 @@ import authReducer from '../Slices/authSlice'
 import toastReducer from '../Slices/toastSlice'
 import toggleReducer from '../Slices/toggleContentSlice'
 import itemsReducer from '../Slices/itemAPISlice'
+import navbarReducer from '../Slices/navbarSlice'
 
 export const store = configureStore({
     reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
         auth: authReducer,
         toast: toastReducer,
         toggle: toggleReducer,
+        navbar: navbarReducer,
     },
 })
