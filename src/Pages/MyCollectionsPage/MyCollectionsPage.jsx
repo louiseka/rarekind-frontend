@@ -7,6 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
 import { useSearch } from '../../Components/CollectionSearch/SearchContext'
+import { useSort } from '../../Components/CollectionFilter/SortContext'
+import {
+    sortCollections,
+    searchCollectionsByQuery,
+} from '../../../utils/collections'
 
 export default function MyCollectionsPage() {
     const dispatch = useDispatch()
@@ -14,12 +19,17 @@ export default function MyCollectionsPage() {
     const status = useSelector((state) => state.collections.status)
     const error = useSelector((state) => state.collections.error)
     const { query } = useSearch()
+    const { sortOrder } = useSort()
 
-    const searchResult = collections.filter((collection) =>
-        collection.name.toLowerCase().includes(query.toLowerCase())
-    )
+    // Search Input functionality
 
+    const searchedCollections = searchCollectionsByQuery(collections, query)
     const showSearchResults = query.trim().length > 0
+
+    const baseList = searchedCollections
+
+    // Sort-Filter functionality
+    const displayedCollections = sortCollections(baseList, sortOrder)
 
     useEffect(() => {
         if (status === 'idle') {
@@ -35,20 +45,18 @@ export default function MyCollectionsPage() {
             </div>
             {status === 'loading' && <Loading />}
 
-            {searchResult.length === 0 && (
+            {showSearchResults && searchedCollections.length === 0 && (
                 <p className={styles.resultsMessage}>
                     Oops! No collections found for that name.
                 </p>
             )}
             <div className={styles.grid}>
-                {(showSearchResults ? searchResult : collections).map(
-                    (collection) => (
-                        <CollectionCard
-                            key={collection.id}
-                            collection={collection}
-                        />
-                    )
-                )}
+                {displayedCollections.map((collection) => (
+                    <CollectionCard
+                        key={collection.id}
+                        collection={collection}
+                    />
+                ))}
             </div>
         </section>
     )
