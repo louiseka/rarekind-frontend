@@ -1,8 +1,20 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 
-export default function CollectionDetails({ collectionToShow }) {
-
+export default function CollectionDetails({
+    collectionToShow,
+    classificationNameMap,
+    items,
+}) {
+    const tags = Array.from(
+        new Set(
+            items
+                .map((i) =>
+                    classificationNameMap?.get(String(i.classification_id))
+                )
+                .filter(Boolean)
+        )
+    )
 
     return (
         <div className={styles.collectionContainer}>
@@ -24,19 +36,29 @@ export default function CollectionDetails({ collectionToShow }) {
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
-                    <li className={styles.tag}>TAG</li>
-                    <li className={styles.tag}>TAG</li>
+                    {tags.map((t) => (
+                        <li key={t} className={styles.tag}>
+                            {t}
+                        </li>
+                    ))}
                 </ul>
             </div>
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime={collectionToShow.date_created}> {new Date(collectionToShow.date_created).toLocaleString()} </time>
+                    <time dateTime={collectionToShow.date_created}>
+                        {' '}
+                        {new Date(
+                            collectionToShow.date_created
+                        ).toLocaleString()}{' '}
+                    </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
                     <time dateTime={collectionToShow.date_updated}>
-                        {new Date(collectionToShow.date_updated).toLocaleString()}
+                        {new Date(
+                            collectionToShow.date_updated
+                        ).toLocaleString()}
                     </time>
                 </p>
             </div>

@@ -35,6 +35,7 @@ function OneOfMyCollectionsPage() {
     const classificationStatus = useSelector(
         (state) => state.classifications.status
     )
+    
 
     useEffect(() => {
         if (status === 'idle') {
@@ -71,6 +72,8 @@ function OneOfMyCollectionsPage() {
                     {status === 'succeeded' && (
                         <CollectionDetails
                             collectionToShow={collectionToShow}
+                            classificationNameMap={classificationNameMap}
+                            items={items}
                         />
                     )}
                 </section>
@@ -85,11 +88,9 @@ function OneOfMyCollectionsPage() {
                         <ItemCard
                             key={item.id}
                             item={item}
-                            classificationName={
-                                classificationNameMap.get(
-                                    String(item.classification_id)
-                                )
-                            }
+                            classificationName={classificationNameMap.get(
+                                String(item.classification_id)
+                            )}
                         />
                     ))}
                 </div>
