@@ -7,6 +7,7 @@ import routes from './Routes.jsx'
 import styles from './main.module.css'
 import './global.css'
 import PopupRoot from './Components/PopUp/Popup.jsx'
+import { SearchProvider } from './Components/CollectionSearch/SearchContext.jsx'
 
 const router = createBrowserRouter(routes)
 
@@ -14,8 +15,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'))
 root.render(
     <React.StrictMode>
         <Provider store={store}>
-            <RouterProvider router={router} className={styles.router} />
-            <PopupRoot />
+            <SearchProvider>
+                <RouterProvider router={router} className={styles.router} />
+                <PopupRoot />
+            </SearchProvider>
         </Provider>
     </React.StrictMode>
 )
