@@ -28,6 +28,8 @@ function OneOfMyCollectionsPage() {
         (c) => String(c.id) === String(id)
     )
 
+    console.log(items)
+
     useEffect(() => {
         if (status === 'idle') {
             dispatch(fetchCollections())
@@ -65,7 +67,7 @@ function OneOfMyCollectionsPage() {
             <ToggleButton />
             {itemsStatus === 'loading' && <Loading />}
             <section className={styles.itemContainer}>
-                {/* <AddItems /> */}
+                {items.length <= 0 && <AddItems />}
                 <div className={styles.grid}>
                     {items.map((item) => (
                         <ItemCard key={item.id} item={item} />
