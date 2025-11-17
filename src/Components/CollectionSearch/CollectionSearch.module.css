@@ -27,14 +27,5 @@
 .searchButton {
     font-size: 1.25rem;
     font-weight: var(--font-weight-bold);
-    background-color: transparent;
-    border: none;
     color: var(--color-text-light-gray);
-    cursor: pointer;
-}
-
-.searchButton:hover,
-.searchButton:active,
-.searchButton:focus {
-    color: var(--color-primary);
 }
