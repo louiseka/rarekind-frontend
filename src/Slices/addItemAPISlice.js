@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import apiService from '../services/apiService'
+import makeApiRequest from '../services/apiService'
 
 export const addItem = createAsyncThunk(
     'collection/addItem',
-    async ({ collectionId, updatedData }) => {
-        const response = await apiService(
-            `collections/${collectionId}/items`,
+    async ({ collection_Id, updatedData }) => {
+        const response = await makeApiRequest(
+            `animals`,
             {
                 method: 'POST',
                 body: JSON.stringify(updatedData),
@@ -18,7 +19,7 @@ export const addItem = createAsyncThunk(
 export const deleteItem = createAsyncThunk(
     'collection/deleteItem',
     async ({ collectionId, itemId }) => {
-        const response = await apiService(
+        const response = await makeApiRequest(
             `collections/${collectionId}/items/${itemId}`,
             {
                 method: 'DELETE',

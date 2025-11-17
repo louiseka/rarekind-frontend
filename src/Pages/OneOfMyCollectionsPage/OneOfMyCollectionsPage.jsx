@@ -19,7 +19,6 @@ import {
 } from '../../Slices/classificationAPISlice'
 import Loading from '../../Components/Loading/Loading'
 
-
 function OneOfMyCollectionsPage() {
     const selectedToggle = useSelector((state) => state.toggle.selectedToggle)
     const dispatch = useDispatch()
@@ -36,8 +35,6 @@ function OneOfMyCollectionsPage() {
     const classificationStatus = useSelector(
         (state) => state.classifications.status
     )
-
-    console.log(items)
 
     useEffect(() => {
         if (status === 'idle') {
