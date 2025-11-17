@@ -8,7 +8,7 @@ export default function ItemCard({ item, classificationName }) {
                 <p className={styles.cardTag}>{classificationName}</p>
             </div>
             <img src={item.image_url} alt={item.name} />
-            <p>{item.description}</p>
+            <p className={styles.cardDescription}>{item.description}</p>
         </div>
     )
 }

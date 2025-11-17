@@ -2,7 +2,7 @@
     border: 2px solid var(--color-background-feature);
     border-radius: var(--border-radius-s);
     width: 100%;
-    height: 200px;
+    height: fit-content;
     background-color: var(--color-background-feature);
     padding: 1.5em;
 }
@@ -26,4 +26,10 @@
     border-radius: var(--border-radius-xs);
     background-color: var(--color-text-dark-gray);
     display: inline-block;
+}
+
+.cardDescription {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 120px;
 }
