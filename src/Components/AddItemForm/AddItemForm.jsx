@@ -35,6 +35,14 @@ function AddItemForm() {
                         className={styles.description}
                     />
                 </label>
+                 <label className={styles.label}>
+                    Image
+                    <input
+                        type="file"
+                        name="image"
+                        className={styles.image}
+                    />
+                </label>
                 <select className={styles.select} name="classification" aria-label='select classification'>
                     <option value="">Select Classification</option>
                     <option value="mammal">Mammal</option>

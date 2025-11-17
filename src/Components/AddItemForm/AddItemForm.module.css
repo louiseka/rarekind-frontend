@@ -64,9 +64,22 @@ h2 {
     resize: vertical;
 }
 
+.image {
+    font-family: var(--font-family-body);
+    color: var(--color-text-light-gray);
+    width: 100%;
+    padding: 8px;
+    font-size: 1rem;
+    background: var(--color-background-black);
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
+    margin: 10px auto;
+}
+
 .select {
     background-color: transparent;
-    border: none;
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
     font-family: var(--font-family-body);
     font-size: 1.1rem;
     padding: 0.5em 1em;
