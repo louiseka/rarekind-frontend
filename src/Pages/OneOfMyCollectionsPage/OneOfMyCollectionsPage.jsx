@@ -35,7 +35,6 @@ function OneOfMyCollectionsPage() {
     const classificationStatus = useSelector(
         (state) => state.classifications.status
     )
-    
 
     useEffect(() => {
         if (status === 'idle') {
