@@ -8,6 +8,7 @@ import styles from './main.module.css'
 import './global.css'
 import PopupRoot from './Components/PopUp/Popup.jsx'
 import { SearchProvider } from './Components/CollectionSearch/SearchContext.jsx'
+import { SortProvider } from './Components/CollectionFilter/SortContext.jsx'
 
 const router = createBrowserRouter(routes)
 
@@ -16,8 +17,10 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <SearchProvider>
-                <RouterProvider router={router} className={styles.router} />
-                <PopupRoot />
+                <SortProvider>
+                    <RouterProvider router={router} className={styles.router} />
+                    <PopupRoot />
+                </SortProvider>
             </SearchProvider>
         </Provider>
     </React.StrictMode>
