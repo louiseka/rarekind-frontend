@@ -3,6 +3,7 @@
     border-radius: var(--border-radius-s);
     width: 100%;
     height: fit-content;
+    min-height: 200px;
     background-color: var(--color-background-feature);
     padding: 1.5em;
 }
@@ -18,14 +19,14 @@
     font-weight: 400;
 }
 
-.cardTag {
+.tag {
     font-size: var(--font-size-small);
     color: var(--color-text-light-gray);
-    margin: 0.2em 0 0.5em;
+    margin: 1em 1em 1em 0;
     padding: 0.5em;
     border-radius: var(--border-radius-xs);
-    background-color: var(--color-text-dark-gray);
     display: inline-block;
+    justify-content: space-around;
 }
 
 .cardDescription {
