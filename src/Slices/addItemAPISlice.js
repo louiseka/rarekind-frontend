@@ -1,10 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import apiService from '../services/apiService'
 import makeApiRequest from '../services/apiService'
 
 export const addItem = createAsyncThunk(
     'collection/addItem',
-    async ({ collection_Id, updatedData }) => {
+    async ({ updatedData }) => {
         const response = await makeApiRequest(
             `animals`,
             {
