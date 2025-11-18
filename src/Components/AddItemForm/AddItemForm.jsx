@@ -17,7 +17,7 @@ function AddItemForm() {
         collection_id: id,
         name: '',
         description: '',
-        image: '',
+        image_url: '',
         classification_id: '',
     })
 
@@ -58,6 +58,7 @@ function AddItemForm() {
                         required
                         className={styles.name}
                         onChange={handleChange}
+                        value={formData.name}
                     />
                 </label>
                 <label className={styles.label}>
@@ -69,12 +70,19 @@ function AddItemForm() {
                         required
                         className={styles.description}
                         onChange={handleChange}
+                        value={formData.description}
                     />
                 </label>
                 <label className={styles.label}>
                     Image
-                    <input type="text" placeholder="Enter image URL..." name="image" className={styles.image} onChange={handleChange}
-        value={formData.image}/>
+                    <input
+                        type="text"
+                        placeholder="Enter image URL..."
+                        name="image_url"
+                        className={styles.image}
+                        onChange={handleChange}
+                        value={formData.image_url}
+                    />
                 </label>
                 <select
                     className={styles.select}
@@ -82,6 +90,7 @@ function AddItemForm() {
                     aria-label="select classification"
                     required
                     onChange={handleChange}
+                    value={formData.classification_id}
                 >
                     <option value="">Select Classification</option>
                     <option value="3">Mammal</option>

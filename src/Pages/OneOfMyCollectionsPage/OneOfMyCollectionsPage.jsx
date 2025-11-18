@@ -81,7 +81,7 @@ function OneOfMyCollectionsPage() {
             <ToggleButton />
             {itemsStatus === 'loading' && <Loading />}
             <section className={styles.itemContainer}>
-                {items.length <= 0 && <AddItems />}
+                <AddItems />
                 <div className={styles.grid}>
                     {items.map((item) => (
                         <ItemCard
