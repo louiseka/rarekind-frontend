@@ -16,6 +16,9 @@ export default function CollectionDetails({
         )
     )
 
+    const imageUrls = items.map((item) => item.image_url)
+    const validImages = imageUrls.filter(Boolean)
+
     return (
         <div className={styles.collectionContainer}>
             <h2 className={styles.pageTitle}>{collectionToShow.name} </h2>
@@ -25,14 +28,20 @@ export default function CollectionDetails({
                     {collectionToShow.description}
                 </p>
             </div>
-            <div className={styles.additionalContainer}>
-                <h3 className={styles.title}>ADDITIONAL</h3>
-                <p className={styles.additionalText}>
-                    Additional info filled up by the user when creating
-                    collection. This text could be quite long so we don't want
-                    it to be in a narrow column.
-                </p>
-            </div>
+            {validImages.length >= 1 && (
+                <div className={styles.additionalContainer}>
+                    <h3 className={styles.title}>PHOTOS</h3>
+                    <div className={styles.imageContainer}>
+                        {validImages.slice(0, 2).map((url) => (
+                            <img
+                                key={url}
+                                src={url}
+                                className={styles.summaryImage}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
@@ -47,10 +56,9 @@ export default function CollectionDetails({
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
                     <time dateTime={collectionToShow.date_created}>
-                        {' '}
                         {new Date(
                             collectionToShow.date_created
-                        ).toLocaleString()}{' '}
+                        ).toLocaleString()}
                     </time>
                 </p>
                 <p className={styles.statusDetails}>

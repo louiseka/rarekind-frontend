@@ -17,7 +17,6 @@
 }
 
 .descriptionText,
-.additionalText,
 .tagList {
     margin: 0.5em 0 0;
 }
@@ -44,7 +43,7 @@
 
 .descriptionContainer,
 .additionalContainer {
-    max-width: 800px;
+    max-width: 900px;
 }
 
 /* Tags */
@@ -78,6 +77,21 @@
 .statusDetails {
     font-size: var(--font-size-small);
     padding: 1em 0 0;
+}
+/* Images */
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    margin: 1em 0;
+}
+
+.summaryImage {
+    height: 200px;
+    border-radius: var(--border-radius-m);
+    object-fit: cover;
 }
 
 /* Buttons */
@@ -128,6 +142,9 @@
 
 @media (min-width: 768px) {
     .buttonContainer {
+        flex-direction: row;
+    }
+    .imageContainer {
         flex-direction: row;
     }
 }

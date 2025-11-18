@@ -36,8 +36,6 @@ function OneOfMyCollectionsPage() {
         (state) => state.classifications.status
     )
 
-    console.log(items)
-
     useEffect(() => {
         if (status === 'idle') {
             dispatch(fetchCollections())
