@@ -21,7 +21,6 @@ export default function CollectionDetails({
 
     return (
         <div className={styles.collectionContainer}>
-            <h2 className={styles.pageTitle}>{collectionToShow.name} </h2>
             <div className={styles.descriptionContainer}>
                 <h3 className={styles.title}>DESCRIPTION</h3>
                 <p className={styles.descriptionText}>

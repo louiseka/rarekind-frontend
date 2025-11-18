@@ -3,10 +3,6 @@
 }
 
 /* Text Styling */
-.title {
-    color: var(--color-text-dark-gray);
-}
-
 .pageTitle,
 .description {
     color: var(--color-text-light-gray);
