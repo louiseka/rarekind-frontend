@@ -16,6 +16,8 @@ export default function CollectionDetails({
         )
     )
 
+    const imageUrls = items.map((item) => item.image_url)
+
     return (
         <div className={styles.collectionContainer}>
             <h2 className={styles.pageTitle}>{collectionToShow.name} </h2>
@@ -26,12 +28,10 @@ export default function CollectionDetails({
                 </p>
             </div>
             <div className={styles.additionalContainer}>
-                <h3 className={styles.title}>ADDITIONAL</h3>
-                <p className={styles.additionalText}>
-                    Additional info filled up by the user when creating
-                    collection. This text could be quite long so we don't want
-                    it to be in a narrow column.
-                </p>
+                <h3 className={styles.title}>PHOTOS</h3>
+                {imageUrls.map((url) => (
+                    <img key={url} src={url} />
+                ))}
             </div>
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
