@@ -27,12 +27,21 @@ export default function CollectionDetails({
                     {collectionToShow.description}
                 </p>
             </div>
-            <div className={styles.additionalContainer}>
-                <h3 className={styles.title}>PHOTOS</h3>
-                {imageUrls.map((url) => (
-                    <img key={url} src={url} />
-                ))}
-            </div>
+            {imageUrls.length >= 1 && (
+                <div className={styles.additionalContainer}>
+                    <h3 className={styles.title}>PHOTOS</h3>
+                    <div className={styles.imageContainer}>
+                        {imageUrls.map((url) => (
+                            <img
+                                key={url}
+                                src={url}
+                                alt={`A photo of ${collectionToShow.name}`}
+                                className={styles.summaryImage}
+                            />
+                        ))}
+                    </div>
+                </div>
+            )}
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
@@ -50,7 +59,7 @@ export default function CollectionDetails({
                         {' '}
                         {new Date(
                             collectionToShow.date_created
-                        ).toLocaleString()}{' '}
+                        ).toLocaleString()}
                     </time>
                 </p>
                 <p className={styles.statusDetails}>
