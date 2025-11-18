@@ -17,6 +17,7 @@ export default function CollectionDetails({
     )
 
     const imageUrls = items.map((item) => item.image_url)
+    const validImages = imageUrls.filter(Boolean)
 
     return (
         <div className={styles.collectionContainer}>
@@ -27,15 +28,14 @@ export default function CollectionDetails({
                     {collectionToShow.description}
                 </p>
             </div>
-            {imageUrls.length >= 1 && (
+            {validImages.length >= 1 && (
                 <div className={styles.additionalContainer}>
                     <h3 className={styles.title}>PHOTOS</h3>
                     <div className={styles.imageContainer}>
-                        {imageUrls.map((url) => (
+                        {validImages.slice(0, 2).map((url) => (
                             <img
                                 key={url}
                                 src={url}
-                                alt={`A photo of ${collectionToShow.name}`}
                                 className={styles.summaryImage}
                             />
                         ))}
@@ -56,7 +56,6 @@ export default function CollectionDetails({
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
                     <time dateTime={collectionToShow.date_created}>
-                        {' '}
                         {new Date(
                             collectionToShow.date_created
                         ).toLocaleString()}
