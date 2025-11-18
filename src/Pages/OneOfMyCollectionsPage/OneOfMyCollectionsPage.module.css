@@ -26,6 +26,10 @@
     margin: 1.5em 0 0;
 }
 
+.title {
+    color: var(--color-text-dark-gray);
+}
+
 @media (min-width: 576px) {
     .itemContainer {
         margin: 1.5em auto 3em;
