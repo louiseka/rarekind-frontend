@@ -6,6 +6,7 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: space-between;
+    margin: 1em 0;
 }
 
 .logo {
@@ -42,16 +43,6 @@
     color: var(--color-primary);
 }
 
-@media (min-width: 768px) {
-    .logo {
-        height: 100px;
-    }
-
-    .uiSection {
-        margin-top: 20px;
-    }
-}
-
 /* dark mode slider styles */
 
 /* The switch - the box around the slider */
@@ -82,7 +73,7 @@
     bottom: 0;
     background-color: var(--color-background-feature);
     transition: 0.5s;
-    border-radius: 30px;    
+    border-radius: 30px;
 }
 
 .slider:before {
@@ -105,4 +96,17 @@ input:checked + .slider {
 input:checked + .slider:before {
     transform: translateX(100%);
     box-shadow: inset 15px -4px 0px 15px #fff000;
+}
+
+@media (min-width: 768px) {
+    .wrapper {
+        margin: 2em;
+    }
+    .logo {
+        height: 100px;
+    }
+
+    .uiSection {
+        margin-top: 20px;
+    }
 }
