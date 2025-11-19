@@ -11,10 +11,9 @@ function LoginForm() {
         email: '',
         password: '',
     })
-
     const [errorMessage, setErrorMessage] = useState('')
 
-    console.log('Status:', status)
+    
 
     console.log(formData)
 
@@ -35,7 +34,7 @@ function LoginForm() {
             dispatch(closePopup())
         } catch (err) {
             console.error('Login failed:', err)
-        }
+        } console.log('Status:', status)
     }
 
     return (

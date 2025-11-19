@@ -59,11 +59,11 @@ function SignupForm() {
             <h2>Sign up</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
-                    Name
+                    Username
                     <input
                         type="text"
                         name="name"
-                        placeholder="Enter name..."
+                        placeholder="Enter username..."
                         className={styles.nameInput}
                         value={formData.name}
                         onChange={onChange}
