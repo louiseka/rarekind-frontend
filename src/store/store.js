@@ -7,6 +7,7 @@ import toastReducer from '../Slices/toastSlice'
 import itemsReducer from '../Slices/itemAPISlice'
 import navbarReducer from '../Slices/navbarSlice'
 import classificationReducer from '../Slices/classificationAPISlice'
+import addItemReducer from '../Slices/addItemAPISlice'
 
 export const store = configureStore({
     reducer: {
@@ -18,5 +19,6 @@ export const store = configureStore({
         toast: toastReducer,
         navbar: navbarReducer,
         classifications: classificationReducer,
+        addItem: addItemReducer,
     },
 })

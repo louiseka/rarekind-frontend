@@ -101,6 +101,7 @@ function OneOfMyCollectionsPage() {
             <section className={styles.itemContainer}>
                 {items.length <= 0 && <AddItems />}
                 {items.length > 0 && <AddItemButton />}
+
                 <div className={styles.grid}>
                     {items.map((item) => (
                         <ItemCard
