@@ -29,6 +29,11 @@
 .title {
     color: var(--color-text-dark-gray);
 }
+.itemHeader {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-primary);
+    width: 60px;
+}
 
 @media (min-width: 576px) {
     .itemContainer {

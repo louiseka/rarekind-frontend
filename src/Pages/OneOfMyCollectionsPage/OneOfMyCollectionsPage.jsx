@@ -95,6 +95,8 @@ function OneOfMyCollectionsPage() {
                 showContent={showContent}
                 handleToggle={() => setShowContent((prev) => !prev)}
             />
+            <h3 className={styles.itemHeader}>Items</h3>
+
             {itemsStatus === 'loading' && <Loading />}
             <section className={styles.itemContainer}>
                 {items.length <= 0 && <AddItems />}
