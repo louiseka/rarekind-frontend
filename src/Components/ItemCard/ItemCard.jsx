@@ -1,8 +1,13 @@
 import styles from './ItemCard.module.css'
+import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { useDispatch } from 'react-redux'
+import { openPopup } from '../../Slices/popupSlice'
 import { getTagColorClass } from '../CollectionDetails/CollectionDetails'
 
 export default function ItemCard({ item, classificationName }) {
     const t = classificationName
+        const dispatch = useDispatch()
+
     
     return (
         <div className={styles.card}>
@@ -20,6 +25,21 @@ export default function ItemCard({ item, classificationName }) {
                 <p className={`${styles.tag} ${getTagColorClass(t)}`}>{classificationName}</p>
             </div>
             <p className={styles.cardDescription}>{item.description}</p>
+            <div className={styles.buttonContainer}>
+                <button
+                    className={styles.editButton}
+                    onClick={() => dispatch(openPopup('edititem'))}
+                    aria-label={`Edit the animal ${item.name}`}
+                >
+                    <FaPencil />
+                </button>
+                <button
+                    className={styles.deleteButton}
+                    aria-label={`Delete the animal ${item.name}`}
+                >
+                    <FaTrashCan />
+                </button>
+            </div>
         </div>
     )
 }
