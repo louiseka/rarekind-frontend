@@ -3,6 +3,7 @@ import CollectionDetails from '../../Components/CollectionDetails/CollectionDeta
 import ItemCard from '../../Components/ItemCard/ItemCard'
 import AddItems from '../../Components/AddItems/AddItems'
 import ToggleButton from '../../Components/ToggleButton/ToggleButton'
+import AddItemButton from '../../Components/AddItemButton/AddItemButton'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -97,6 +98,7 @@ function OneOfMyCollectionsPage() {
             {itemsStatus === 'loading' && <Loading />}
             <section className={styles.itemContainer}>
                 {items.length <= 0 && <AddItems />}
+                {items.length > 0 && <AddItemButton />}
                 <div className={styles.grid}>
                     {items.map((item) => (
                         <ItemCard
