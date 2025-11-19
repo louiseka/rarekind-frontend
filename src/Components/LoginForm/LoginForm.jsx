@@ -1,7 +1,8 @@
 import styles from './LoginForm.module.css'
-import { useDispatch, useSelector  } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { login } from '../../Slices/authSlice'
 
 function LoginForm() {
     const dispatch = useDispatch()
@@ -11,15 +12,22 @@ function LoginForm() {
         password: '',
     })
 
-    const handleChange = (e) => {
+    console.log(formData)
+
+    const onChange = (e) => {
+        e.preventDefault()
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        dispatch(addItem({ collectionId: id, updatedData: formData }))
+    useEffect(() => {
+        if (error) {
+            setErrorMessage('Incorrect email or password')
+        }
+    }, [])
+
+    const handleSubmit = async ({ email, password }) => {
+        await dispatch(login({ email, password }))
             .then(() => {
-                dispatch(fetchItemsByCollectionId(id))
                 dispatch(closePopup())
             })
             .catch((error) => console.error('Error logging in', error))
@@ -35,15 +43,15 @@ function LoginForm() {
                 X
             </button>
             <h2>Log in</h2>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
                     Email
                     <input
                         type="text"
-                        name="username"
+                        name="email"
                         placeholder="Enter email..."
                         className={styles.emailInput}
-                        onChange={handleChange}
+                        onChange={onChange}
                         value={formData.email}
                     />
                 </label>
@@ -54,7 +62,7 @@ function LoginForm() {
                         name="password"
                         placeholder="Enter password..."
                         className={styles.passwordInput}
-                        onChange={handleChange}
+                        onChange={onChange}
                         value={formData.password}
                     />
                 </label>
