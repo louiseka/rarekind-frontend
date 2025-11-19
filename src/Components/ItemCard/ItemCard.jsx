@@ -25,10 +25,14 @@ export default function ItemCard({ item, classificationName }) {
                 <button
                     className={styles.editButton}
                     onClick={() => dispatch(openPopup('edititem'))}
+                    aria-label={`Edit the animal ${item.name}`}
                 >
                     <FaPencil />
                 </button>
-                <button className={styles.deleteButton}>
+                <button
+                    className={styles.deleteButton}
+                    aria-label={`Delete the animal ${item.name}`}
+                >
                     <FaTrashCan />
                 </button>
             </div>
