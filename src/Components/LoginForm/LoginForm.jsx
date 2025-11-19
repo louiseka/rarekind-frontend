@@ -13,8 +13,6 @@ function LoginForm() {
     })
     const [errorMessage, setErrorMessage] = useState('')
 
-    
-
     console.log(formData)
 
     const onChange = (e) => {
@@ -30,11 +28,12 @@ function LoginForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         try {
-            await dispatch(login(formData)).unwrap()
+            dispatch(login(formData))
             dispatch(closePopup())
         } catch (err) {
             console.error('Login failed:', err)
-        } console.log('Status:', status)
+        }
+        console.log('Status:', status)
     }
 
     return (

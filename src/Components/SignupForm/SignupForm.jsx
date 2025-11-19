@@ -30,13 +30,14 @@ function SignupForm() {
                 formData.email,
                 formData.password
             )
-            console.log('Registration successful, logging in...')
-            .then(await dispatch(
-                authService.login({
-                    email: formData.email,
-                    password: formData.password,
-                })
-            ).unwrap())
+            console.log('Registration successful, logging in...').then(
+                await dispatch(
+                    authService.login({
+                        email: formData.email,
+                        password: formData.password,
+                    })
+                ).unwrap()
+            )
 
             console.log('Login successful')
             dispatch(closePopup())
