@@ -12,10 +12,13 @@ function LoginForm() {
         password: '',
     })
 
+    const [errorMessage, setErrorMessage] = useState('')
+
+    console.log('Status:', status)
+
     console.log(formData)
 
     const onChange = (e) => {
-        e.preventDefault()
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
 
@@ -23,14 +26,16 @@ function LoginForm() {
         if (error) {
             setErrorMessage('Incorrect email or password')
         }
-    }, [])
+    }, [error])
 
-    const handleSubmit = async ({ email, password }) => {
-        await dispatch(login({ email, password }))
-            .then(() => {
-                dispatch(closePopup())
-            })
-            .catch((error) => console.error('Error logging in', error))
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        try {
+            await dispatch(login(formData)).unwrap()
+            dispatch(closePopup())
+        } catch (err) {
+            console.error('Login failed:', err)
+        }
     }
 
     return (
