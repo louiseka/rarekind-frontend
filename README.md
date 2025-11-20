@@ -35,18 +35,21 @@ RareKind is a frontend React application designed to help users browse and manag
 - CSS Modules  
 
 ## Installation (Local Development)
-
 Follow these steps to set up RareKind on your local machine:
 
-1. **Clone the repository**  
-```bash
-git clone https://github.com/your-username/rarekind-frontend.git
-cd rarekind-frontend```
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/your-username/rarekind-frontend.git
+   cd rarekind-frontend
 
-2. **Install dependencies:**
-`npm install`
+2. Install dependencies 
+   ```bash
+   npm install
 
-3. **Set up environment variables in .env**
+3. Set up environment variables
+Create a .env file in the root directory and add the necessary variables.   
+   
+4. Start the backend server  
+   ```bash
+   npm run dev 
 
-4. **Start the backend server:**
-`npm run dev`
