@@ -8,7 +8,7 @@ const makeApiRequest = async (url, options = {}) => {
     // If headers not set, set as empty object
     options.headers = options.headers || {}
     // Include credentials for cross-origin requests
-    // options.credentials = 'include'
+    options.credentials = 'include'
     options.headers['Content-Type'] = 'application/json'
 
     //Try and get access token out of session storage

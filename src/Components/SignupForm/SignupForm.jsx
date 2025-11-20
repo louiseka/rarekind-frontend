@@ -1,10 +1,48 @@
 import styles from './SignupForm.module.css'
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
+import { useState } from 'react'
+import authService from '../../services/authService'
+import { login } from '../../Slices/authSlice'
 
 function SignupForm() {
     const dispatch = useDispatch()
+    const status = useSelector((state) => state.auth.status)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [formData, setFormData] = useState({
+        name: '',
+        email: '',
+        password: '',
+    })
+
+    const onChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value })
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+        setErrorMessage('')
+        try {
+            await authService.register(
+                formData.name,
+                formData.email,
+                formData.password
+            )
+            console.log('Registration successful, logging in...')
+            await dispatch(
+                login({
+                    email: formData.email,
+                    password: formData.password,
+                })
+            ).unwrap()
+
+            console.log('Login successful')
+            dispatch(closePopup())
+        } catch (error) {
+            console.error('Signup/login error:', error)
+        }
+    }
+    console.log(status)
 
     return (
         <div className={styles.wrapper}>
@@ -16,23 +54,29 @@ function SignupForm() {
                 X
             </button>
             <h2>Sign up</h2>
-            <form className={styles.form}>
+            <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
-                    Name
+                    Username
                     <input
                         type="text"
                         name="name"
-                        placeholder="Enter name..."
+                        placeholder="Enter username..."
                         className={styles.nameInput}
+                        value={formData.name}
+                        onChange={onChange}
+                        required
                     />
                 </label>
                 <label className={styles.label}>
                     Email
                     <input
                         type="text"
-                        name="username"
+                        name="email"
                         placeholder="Enter email..."
                         className={styles.emailInput}
+                        value={formData.email}
+                        onChange={onChange}
+                        required
                     />
                 </label>
                 <label className={styles.label}>
@@ -42,10 +86,13 @@ function SignupForm() {
                         name="password"
                         placeholder="Enter password..."
                         className={styles.passwordInput}
+                        value={formData.password}
+                        onChange={onChange}
+                        required
                     />
                 </label>
                 <button type="submit" className={styles.button}>
-                    SIGN UP
+                    {status === 'loading' ? 'SIGNING UP...' : 'SIGN UP'}
                 </button>
             </form>
         </div>
