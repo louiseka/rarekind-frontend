@@ -11,7 +11,6 @@ const login = async (email, password) => {
     const response = await makeApiRequest('auth/login', {
         method: 'POST',
         body: JSON.stringify({ email, password }),
-        
     })
 
     if (response.accessToken) {

@@ -1,6 +1,7 @@
 .wrapper {
     background-color: var(--color-background-black);
     width: 100%;
+    max-width: 1440px;
     min-height: 70px;
     display: flex;
     flex-direction: row;
@@ -108,5 +109,6 @@ input:checked + .slider:before {
 
     .uiSection {
         margin-top: 20px;
+        margin-right: 10px;
     }
 }
