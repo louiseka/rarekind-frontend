@@ -8,7 +8,7 @@ function NewCollectionForm() {
     return (
         <div className={styles.wrapper}>
             <button
-                onClick={() => dispatch(closePopup())}
+                onClick={() => dispatch(closePopup())} 
                 className={styles.close}
                 aria-label="Close New Collection Form"
             >

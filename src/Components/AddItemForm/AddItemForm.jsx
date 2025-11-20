@@ -84,7 +84,7 @@ function AddItemForm() {
                         value={formData.image_url}
                     />
                 </label>
-                <select
+                <select 
                     className={styles.select}
                     name="classification_id"
                     aria-label="select classification"
