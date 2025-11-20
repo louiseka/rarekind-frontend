@@ -1,8 +1,6 @@
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import makeApiRequest from '../services/apiService'
 
-
-
 export const fetchClassifications = createAsyncThunk(
     'classifications/fetchClassifications',
     async () => {
