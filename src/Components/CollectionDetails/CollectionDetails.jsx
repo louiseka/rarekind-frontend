@@ -65,18 +65,14 @@ export default function CollectionDetails({
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime={collectionToShow.date_created}>
-                        {new Date(
-                            collectionToShow.date_created
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.created_at}>
+                        {new Date(collectionToShow.created_at).toLocaleString()}
                     </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
-                    <time dateTime={collectionToShow.date_updated}>
-                        {new Date(
-                            collectionToShow.date_updated
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.updated_at}>
+                        {new Date(collectionToShow.updated_at).toLocaleString()}
                     </time>
                 </p>
             </div>
