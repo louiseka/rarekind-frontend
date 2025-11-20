@@ -1,5 +1,9 @@
 # RareKind
 
+## View live at
+
+https://rarekind-frontend.vercel.app/
+
 ## Description
 
 The RareKind frontend is a React application that allows users to browse collections and items,and manage their personal collections. It will interacts with the RareKind backend through and uses Redux for state management and CSS Modules for styling.
