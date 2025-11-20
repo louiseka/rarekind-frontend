@@ -1,15 +1,8 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { useSelector } from 'react-redux'
 
-export const getTagColorClass = (tag) => {
-    const tagLower = tag.toLowerCase()
-    if (tagLower.includes('bird')) return styles.tagBird
-    if (tagLower.includes('mammal')) return styles.tagMammal
-    if (tagLower.includes('fish')) return styles.tagFish
-    if (tagLower.includes('reptile')) return styles.tagReptile
-    if (tagLower.includes('amphibian')) return styles.tagAmphibian
-    return styles.tagDefault
-}
+
 
 
 export default function CollectionDetails({
@@ -56,7 +49,7 @@ export default function CollectionDetails({
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
                     {tags.map((t) => (
-                        <li key={t} className={`${styles.tag} ${getTagColorClass(t)}`}>
+                        <li key={t} className={styles.tag}>
                             {t}
                         </li>
                     ))}

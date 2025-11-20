@@ -2,11 +2,10 @@ import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
-import { getTagColorClass } from '../CollectionDetails/CollectionDetails'
+
 
 export default function ItemCard({ item, classificationName }) {
-    const t = classificationName
-        const dispatch = useDispatch()
+    
 
     
     return (
@@ -22,7 +21,7 @@ export default function ItemCard({ item, classificationName }) {
             )}
             <div className={styles.cardHeaderContainer}>
                 <h3 className={styles.cardHeader}>{item.name}</h3>
-                <p className={`${styles.tag} ${getTagColorClass(t)}`}>{classificationName}</p>
+                <p className={styles.tag}>{classificationName}</p>
             </div>
             <p className={styles.cardDescription}>{item.description}</p>
             <div className={styles.buttonContainer}>
