@@ -1,9 +1,9 @@
 import styles from './SignupForm.module.css'
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
 import authService from '../../services/authService'
+import { login } from '../../Slices/authSlice'
 
 function SignupForm() {
     const dispatch = useDispatch()
@@ -23,18 +23,18 @@ function SignupForm() {
         e.preventDefault()
         setErrorMessage('')
         try {
-            authService.register(
+            await authService.register(
                 formData.name,
                 formData.email,
                 formData.password
             )
             console.log('Registration successful, logging in...')
-            dispatch(
-                authService.login({
+            await dispatch(
+                login({
                     email: formData.email,
                     password: formData.password,
                 })
-            )
+            ).unwrap()
 
             console.log('Login successful')
             dispatch(closePopup())
@@ -64,6 +64,7 @@ function SignupForm() {
                         className={styles.nameInput}
                         value={formData.name}
                         onChange={onChange}
+                        required
                     />
                 </label>
                 <label className={styles.label}>
@@ -75,6 +76,7 @@ function SignupForm() {
                         className={styles.emailInput}
                         value={formData.email}
                         onChange={onChange}
+                        required
                     />
                 </label>
                 <label className={styles.label}>
@@ -86,6 +88,7 @@ function SignupForm() {
                         className={styles.passwordInput}
                         value={formData.password}
                         onChange={onChange}
+                        required
                     />
                 </label>
                 <button type="submit" className={styles.button}>

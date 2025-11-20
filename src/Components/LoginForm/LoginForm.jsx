@@ -53,6 +53,7 @@ function LoginForm() {
                         className={styles.emailInput}
                         onChange={onChange}
                         value={formData.email}
+                        required
                     />
                 </label>
                 <label className={styles.label}>
@@ -64,6 +65,7 @@ function LoginForm() {
                         className={styles.passwordInput}
                         onChange={onChange}
                         value={formData.password}
+                        required
                     />
                 </label>
                 <button type="submit" className={styles.button}>
