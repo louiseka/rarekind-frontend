@@ -8,14 +8,15 @@ function SiteNav() {
     const dispatch = useDispatch()
     const location = useLocation()
     const collectionName = useSelector((state) => state.navbar.collectionName)
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
 
     const isAllCollections =
         location.pathname === '/' || location.pathname === '/allcollections'
 
     const navLinks = [
         { label: 'All collections', url: '/' },
-        { label: 'My collections', url: '/mycollections' },
-        { label: 'Users', url: '/users' },
+        ...(isLoggedIn ? [{ label: 'My collections', url: '/mycollections'}] : []),
+        ...(isLoggedIn ? [{ label: 'Users', url: '/users' }] : []) ,
     ]
 
     return (
