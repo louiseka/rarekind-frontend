@@ -16,7 +16,7 @@ export const addCollection = createAsyncThunk(
 )
 
 export const deleteCollection = createAsyncThunk(
-    'collection/deleteItem',
+    'collection/deleteCollection',
     async ({ collectionId }) => {
         const response = await makeApiRequest(
             `collections/${collectionId}`,
