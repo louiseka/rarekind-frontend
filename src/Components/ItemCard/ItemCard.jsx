@@ -22,8 +22,9 @@ export default function ItemCard({ item, classificationName }) {
             )}
             <div className={styles.cardHeaderContainer}>
                 <h3 className={styles.cardHeader}>{item.name}</h3>
-                <p className={`${styles.tag} ${getTagColorClass(t)}`}>{classificationName}</p>
+                <p className={`${styles.tag} `}>{classificationName}</p>
             </div>
+            {/* ${getTagColorClass(t)} */}
             <p className={styles.cardDescription}>{item.description}</p>
             <div className={styles.buttonContainer}>
                 <button

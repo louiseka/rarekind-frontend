@@ -18,6 +18,7 @@ export default function AllCollectionsPage() {
     const collections = useSelector((state) => state.collections.items)
     const status = useSelector((state) => state.collections.status)
     const error = useSelector((state) => state.collections.error)
+    const items = useSelector((state) => state.items.items)
     const { query } = useSearch()
     const { sortOrder } = useSort()
 
@@ -52,6 +53,7 @@ export default function AllCollectionsPage() {
                     <CollectionCard
                         key={collection.id}
                         collection={collection}
+                        items={items}
                     />
                 ))}
             </div>
