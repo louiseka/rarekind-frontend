@@ -88,11 +88,6 @@ body {
     body {
         margin: 0 auto;
     }
-
-    :root {
-        --font-size-body: 1.5rem; /*p*/
-        --font-size-small: 1rem;
-    }
 }
 
 h1,
