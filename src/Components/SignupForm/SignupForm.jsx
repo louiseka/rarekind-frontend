@@ -9,7 +9,7 @@ import authService from '../../services/authService'
 function SignupForm() {
     const dispatch = useDispatch()
     const status = useSelector((state) => state.auth.status)
-
+    const [errorMessage, setErrorMessage] = useState('')
     const [formData, setFormData] = useState({
         name: '',
         email: '',
@@ -22,22 +22,23 @@ function SignupForm() {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
+        setErrorMessage('')
         console.log('Submitting signup with:', formData)
 
         try {
-            await authService.register(
+            authService.register(
                 formData.name,
                 formData.email,
                 formData.password
             )
-            console.log('Registration successful, logging in...').then(
-                await dispatch(
+            console.log('Registration successful, logging in...')
+                dispatch(
                     authService.login({
                         email: formData.email,
                         password: formData.password,
                     })
-                ).unwrap()
-            )
+                )
+            
 
             console.log('Login successful')
             dispatch(closePopup())
