@@ -1,12 +1,9 @@
-import { useDispatch } from 'react-redux'
-import { openPopup } from '../../Slices/popupSlice'
+import AddItemButton from '../AddItemButton/AddItemButton'
 import styles from './AddItems.module.css'
 
-import { FaInbox, FaPlus } from 'react-icons/fa6'
+import { FaInbox } from 'react-icons/fa6'
 
 export default function AddItems() {
-    const dispatch = useDispatch()
-
     return (
         <section className={styles.wrapper}>
             <div className={styles.noItemsContainer}>
@@ -15,13 +12,7 @@ export default function AddItems() {
                 <p className={styles.textLight}>
                     Would you like to add one now?
                 </p>
-                <button
-                    className={styles.addItemButton}
-                    onClick={() => dispatch(openPopup('additem'))}
-                >
-                    <FaPlus className={styles.addIcon} />
-                    ADD ITEM
-                </button>
+                <AddItemButton />
             </div>
         </section>
     )

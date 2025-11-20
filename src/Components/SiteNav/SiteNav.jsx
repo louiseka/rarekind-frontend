@@ -9,12 +9,13 @@ function SiteNav() {
     const location = useLocation()
     const collectionName = useSelector((state) => state.navbar.collectionName)
 
+    const isAllCollections =
+        location.pathname === '/' || location.pathname === '/allcollections'
+
     const navLinks = [
-        // { label: 'Dashboard', url: '/' },
-        { label: 'All collections', url: '/allcollections' },
+        { label: 'All collections', url: '/' },
         { label: 'My collections', url: '/mycollections' },
         { label: 'Users', url: '/users' },
-       // { label: 'One of my collections', url: '/oneofmycollections' },
     ]
 
     return (
@@ -25,7 +26,13 @@ function SiteNav() {
                         key={navLink.url}
                         to={navLink.url}
                         className={({ isActive }) =>
-                            isActive ? styles.activeLink : styles.inactiveLink
+                            navLink.url === '/'
+                                ? isAllCollections
+                                    ? styles.activeLink
+                                    : styles.inactiveLink
+                                : isActive
+                                ? styles.activeLink
+                                : styles.inactiveLink
                         }
                     >
                         {navLink.label}
