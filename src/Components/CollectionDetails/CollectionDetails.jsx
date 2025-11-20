@@ -11,7 +11,6 @@ export const getTagColorClass = (tag) => {
     return styles.tagDefault
 }
 
-
 export default function CollectionDetails({
     collectionToShow,
     classificationNameMap,
@@ -56,7 +55,10 @@ export default function CollectionDetails({
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
                     {tags.map((t) => (
-                        <li key={t} className={`${styles.tag} ${getTagColorClass(t)}`}>
+                        <li
+                            key={t}
+                            className={`${styles.tag} ${getTagColorClass(t)}`}
+                        >
                             {t}
                         </li>
                     ))}
