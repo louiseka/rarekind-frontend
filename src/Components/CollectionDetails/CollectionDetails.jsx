@@ -1,6 +1,6 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
