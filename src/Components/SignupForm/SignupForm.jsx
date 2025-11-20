@@ -3,7 +3,6 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
-import login from '../../Slices/authSlice'
 import authService from '../../services/authService'
 
 function SignupForm() {
@@ -23,8 +22,6 @@ function SignupForm() {
     const handleSubmit = async (e) => {
         e.preventDefault()
         setErrorMessage('')
-        console.log('Submitting signup with:', formData)
-
         try {
             authService.register(
                 formData.name,
@@ -32,13 +29,12 @@ function SignupForm() {
                 formData.password
             )
             console.log('Registration successful, logging in...')
-                dispatch(
-                    authService.login({
-                        email: formData.email,
-                        password: formData.password,
-                    })
-                )
-            
+            dispatch(
+                authService.login({
+                    email: formData.email,
+                    password: formData.password,
+                })
+            )
 
             console.log('Login successful')
             dispatch(closePopup())
@@ -46,7 +42,6 @@ function SignupForm() {
             console.error('Signup/login error:', error)
         }
     }
-    console.log(formData)
     console.log(status)
 
     return (

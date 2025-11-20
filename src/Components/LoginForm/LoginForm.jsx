@@ -12,9 +12,6 @@ function LoginForm() {
         password: '',
     })
     const [errorMessage, setErrorMessage] = useState('')
-
-    console.log(formData)
-
     const onChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
