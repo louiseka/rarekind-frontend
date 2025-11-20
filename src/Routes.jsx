@@ -3,6 +3,7 @@ import Users from './Pages/UsersPage/UsersPage'
 import AllCollections from './Pages/AllCollectionsPage/AllCollectionsPage'
 import MyCollections from './Pages/MyCollectionsPage/MyCollectionsPage'
 import OneOfMyCollections from './Pages/OneOfMyCollectionsPage/OneOfMyCollectionsPage'
+import ProtectedRoutes from '../utils/ProtectedRoute'
 
 const routes = [
     {
@@ -15,7 +16,7 @@ const routes = [
             },
             {
                 path: 'users',
-                element: <Users />,
+                element: <ProtectedRoutes element={<Users />} />,
             },
             {
                 path: 'allcollections',
@@ -23,12 +24,9 @@ const routes = [
             },
             {
                 path: 'mycollections',
-                element: <MyCollections />,
+                element: <ProtectedRoutes element={<MyCollections />} />,
             },
-            {
-                path: 'oneofmycollections',
-                element: <OneOfMyCollections />,
-            },
+           
             {
                 path: 'collection/:id',
                 element: <OneOfMyCollections />,
