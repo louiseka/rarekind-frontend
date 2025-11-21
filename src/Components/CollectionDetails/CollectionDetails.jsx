@@ -10,12 +10,11 @@ export default function CollectionDetails({ collectionToShow }) {
             collectionToShow.animals.map((animal) => animal.classification_name)
         )
     )
-    const dispatch = useDispatch()
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
-    const user = authService.getUser()
+    const user = authService.getUser().id
     console.log(user)
+    console.log(collectionToShow.user_id)
 
     return (
         <div className={styles.collectionContainer}>
@@ -68,7 +67,7 @@ export default function CollectionDetails({ collectionToShow }) {
                     </time>
                 </p>
             </div>
-            {isLoggedIn && (
+            {user === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
                 <button className={styles.editCollectionButton}>
                     <FaPencil className={styles.icon} />

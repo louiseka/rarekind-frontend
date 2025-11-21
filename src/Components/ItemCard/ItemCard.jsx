@@ -5,9 +5,21 @@ import { openPopup } from '../../Slices/popupSlice'
 import { deleteItem } from '../../Slices/deleteItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import { getTagColorClass } from '../../utils/collections'
+import authService from '../../services/authService'
 
 export default function ItemCard({ item, collectionId }) {
     const dispatch = useDispatch()
+    const user = authService.getUser().id
+    console.log(user)
+
+    const collectionUserId = useSelector(
+        (state) =>
+            state.collections.items.find(
+                (c) => String(c.id) === String(collectionId)
+            ).user_id
+    )
+
+    console.log(collectionUserId)
 
     const deleteAnimal = async () => {
         try {
@@ -43,7 +55,7 @@ export default function ItemCard({ item, collectionId }) {
             </div>
 
             <p className={styles.cardDescription}>{item.description}</p>
-            <div className={styles.buttonContainer}>
+           { user === collectionUserId && (<div className={styles.buttonContainer}>
                 <button
                     className={styles.editButton}
                     onClick={() => dispatch(openPopup('edititem'))}
@@ -58,7 +70,7 @@ export default function ItemCard({ item, collectionId }) {
                 >
                     <FaTrashCan />
                 </button>
-            </div>
+            </div>)}
         </div>
     )
 }
