@@ -1,6 +1,6 @@
 import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { useDispatch } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
 import { deleteItem } from '../../Slices/deleteItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
