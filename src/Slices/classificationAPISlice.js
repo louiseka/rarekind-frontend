@@ -1,7 +1,7 @@
+// todo: use this when creating and editing new animal
+
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit'
 import makeApiRequest from '../services/apiService'
-
-
 
 export const fetchClassifications = createAsyncThunk(
     'classifications/fetchClassifications',

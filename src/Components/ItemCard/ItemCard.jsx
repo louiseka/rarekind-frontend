@@ -2,10 +2,21 @@ import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { useSelector, useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
+import { deleteItem } from '../../Slices/deleteItemAPISlice'
+import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
+import { getTagColorClass } from '../../utils/collections'
 
-export default function ItemCard({ item, classificationName }) {
+export default function ItemCard({ item, collectionId }) {
     const dispatch = useDispatch()
-    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+
+    const deleteAnimal = async () => {
+        try {
+            await dispatch(deleteItem(item.id))
+            await dispatch(fetchItemsByCollectionId(collectionId))
+        } catch (error) {
+            console.error(error)
+        }
+    }
 
     return (
         <div className={styles.card}>
@@ -20,26 +31,34 @@ export default function ItemCard({ item, classificationName }) {
             )}
             <div className={styles.cardHeaderContainer}>
                 <h3 className={styles.cardHeader}>{item.name}</h3>
-                <p className={styles.tag}>{classificationName}</p>
+                {item.classification_name && (
+                    <p
+                        className={`${styles.tag} ${getTagColorClass(
+                            item.classification_name
+                        )} `}
+                    >
+                        {item.classification_name}
+                    </p>
+                )}
             </div>
+
             <p className={styles.cardDescription}>{item.description}</p>
-            {isLoggedIn && (
-                <div className={styles.buttonContainer}>
-                    <button
-                        className={styles.editButton}
-                        onClick={() => dispatch(openPopup('edititem'))}
-                        aria-label={`Edit the animal ${item.name}`}
-                    >
-                        <FaPencil />
-                    </button>
-                    <button
-                        className={styles.deleteButton}
-                        aria-label={`Delete the animal ${item.name}`}
-                    >
-                        <FaTrashCan />
-                    </button>
-                </div>
-            )}
+            <div className={styles.buttonContainer}>
+                <button
+                    className={styles.editButton}
+                    onClick={() => dispatch(openPopup('edititem'))}
+                    aria-label={`Edit the animal ${item.name}`}
+                >
+                    <FaPencil />
+                </button>
+                <button
+                    className={styles.deleteButton}
+                    onClick={deleteAnimal}
+                    aria-label={`Delete the animal ${item.name}`}
+                >
+                    <FaTrashCan />
+                </button>
+            </div>
         </div>
     )
 }

@@ -1,26 +1,15 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { useSelector, useDispatch } from 'react-redux'
+import { getTagColorClass } from '../../utils/collections'
 
-
-
-
-export default function CollectionDetails({
-    collectionToShow,
-    classificationNameMap,
-    items,
-}) {
+export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
         new Set(
-            items
-                .map((i) =>
-                    classificationNameMap?.get(String(i.classification_id))
-                )
-                .filter(Boolean)
+            collectionToShow.animals.map((animal) => animal.classification_name)
         )
     )
 
-    const imageUrls = items.map((item) => item.image_url)
+    const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
 
     return (
@@ -48,9 +37,14 @@ export default function CollectionDetails({
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
-                    {tags.map((t) => (
-                        <li key={t} className={styles.tag}>
-                            {t}
+                    {tags.map((tag) => (
+                        <li
+                            key={tag}
+                            className={`${styles.tag} ${getTagColorClass(
+                                tag
+                            )} `}
+                        >
+                            {tag}
                         </li>
                     ))}
                 </ul>
@@ -58,18 +52,14 @@ export default function CollectionDetails({
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime={collectionToShow.date_created}>
-                        {new Date(
-                            collectionToShow.date_created
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.created_at}>
+                        {new Date(collectionToShow.created_at).toLocaleString()}
                     </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
-                    <time dateTime={collectionToShow.date_updated}>
-                        {new Date(
-                            collectionToShow.date_updated
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.updated_at}>
+                        {new Date(collectionToShow.updated_at).toLocaleString()}
                     </time>
                 </p>
             </div>

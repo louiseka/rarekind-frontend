@@ -5,7 +5,6 @@ import { FaTrashCan } from 'react-icons/fa6'
 import React, { useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { addItem } from '../../Slices/addItemAPISlice'
-import { deleteItem } from '../../Slices/addItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 
 function AddItemForm() {
@@ -21,8 +20,6 @@ function AddItemForm() {
         classification_id: '',
     })
 
-    console.log(formData)
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
@@ -36,7 +33,6 @@ function AddItemForm() {
             })
             .catch((error) => console.error('Error adding animal:', error))
     }
-    console.log(id)
 
     return (
         <div className={styles.wrapper}>
@@ -101,10 +97,6 @@ function AddItemForm() {
                 </select>
                 <button type="submit" className={styles.button}>
                     {status === 'loading' ? 'ADDING...' : 'ADD ANIMAL'}
-                </button>
-                <button type="button" className={styles.deleteButton}>
-                    <FaTrashCan className={styles.deleteIcon} />
-                    DELETE ANIMAL
                 </button>
             </form>
         </div>

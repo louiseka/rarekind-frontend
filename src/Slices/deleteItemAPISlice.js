@@ -1,19 +1,18 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import makeApiRequest from '../services/apiService'
 
-export const addItem = createAsyncThunk(
-    'collection/addItem',
-    async ({ updatedData }) => {
-        const response = await makeApiRequest(`animals`, {
-            method: 'POST',
-            body: JSON.stringify(updatedData),
+export const deleteItem = createAsyncThunk(
+    'collection/deleteItem',
+    async (animalId) => {
+        const response = await makeApiRequest(`animals/${animalId}`, {
+            method: 'DELETE',
         })
         return response
     }
 )
 
-const addItemSlice = createSlice({
-    name: 'addItem',
+const deleteItemSlice = createSlice({
+    name: 'deleteItem',
     initialState: {
         items: [],
         status: 'idle',
@@ -22,18 +21,17 @@ const addItemSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addItem.pending, (state) => {
+            .addCase(deleteItem.pending, (state) => {
                 state.status = 'loading'
             })
-            .addCase(addItem.fulfilled, (state, action) => {
+            .addCase(deleteItem.fulfilled, (state) => {
                 state.status = 'succeeded'
-                state.items = action.payload
             })
-            .addCase(addItem.rejected, (state, action) => {
+            .addCase(deleteItem.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
             })
     },
 })
 
-export default addItemSlice.reducer
+export default deleteItemSlice.reducer
