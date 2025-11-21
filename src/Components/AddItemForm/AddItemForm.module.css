@@ -78,16 +78,16 @@ h2 {
 }
 
 .select {
-    background-color: transparent;
-    border: 1px solid var(--color-text-mid-gray);
-    border-radius: 4px;
+    background-color: var(--color-background-black);
     font-family: var(--font-family-body);
-    font-size: 1.1rem;
+    font-size: 1rem;
     padding: 0.5em 1em;
     margin: 1em 0;
-    color: var(--color-text-mid-gray);
+    color: var(--color-text-light-gray);
     cursor: pointer;
     width: 100%;
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
 }
 
 .button {

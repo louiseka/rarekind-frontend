@@ -8,6 +8,7 @@ import itemsReducer from '../Slices/itemAPISlice'
 import navbarReducer from '../Slices/navbarSlice'
 import classificationReducer from '../Slices/classificationAPISlice'
 import addItemReducer from '../Slices/addItemAPISlice'
+import deleteItemReducer from '../Slices/deleteItemAPISlice'
 import addCollectionReducer  from '../Slices/addCollectionAPISlice'
 
 export const store = configureStore({
@@ -21,6 +22,5 @@ export const store = configureStore({
         navbar: navbarReducer,
         classifications: classificationReducer,
         addItem: addItemReducer,
-        addCollection: addCollectionReducer,
     },
 })

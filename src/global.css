@@ -25,10 +25,8 @@ html.dark-mode {
     --color-loading-spinner-secondary: rgba(251, 255, 0, 0.9);
     --color-loading-spinner-tertiary: rgba(255, 24, 24, 0.8);
     --color-loading-spinner-quaternary: rgba(54, 255, 4, 0.7);
-    --color-loading-spinner-quinary:  rgba(255, 251, 7, 0.6);
+    --color-loading-spinner-quinary: rgba(255, 251, 7, 0.6);
     --color-loading-spinner-senary: rgba(255, 17, 0, 0.5);
-
-
 }
 
 html.light-mode {
@@ -40,10 +38,10 @@ html.light-mode {
     --color-background-black: #f2f2f2;
     --color-background-dark: #e2e7f2;
     --color-background-feature: #c1dbfb;
-     --color-loading-spinner-secondary: rgba(0, 132, 255, 0.9);
+    --color-loading-spinner-secondary: rgba(0, 132, 255, 0.9);
     --color-loading-spinner-tertiary: rgba(255, 24, 24, 0.8);
     --color-loading-spinner-quaternary: rgba(125, 125, 125, 0.7);
-    --color-loading-spinner-quinary:  rgba(7, 205, 255, 0.6);
+    --color-loading-spinner-quinary: rgba(7, 205, 255, 0.6);
     --color-loading-spinner-senary: rgba(255, 17, 0, 0.5);
 }
 
@@ -99,4 +97,22 @@ h4,
 p {
     margin: 0;
     line-height: 1.5;
+}
+
+.tagReptile {
+    background-color: rgb(0, 193, 0);
+}
+.tagMammal {
+    background-color: rgb(216, 40, 40);
+}
+
+.tagFish {
+    background-color: rgb(35, 35, 239);
+}
+
+.tagAmphibian {
+    background-color: rgb(231, 12, 231);
+}
+.tagBird {
+    background-color: rgb(136, 136, 26);
 }

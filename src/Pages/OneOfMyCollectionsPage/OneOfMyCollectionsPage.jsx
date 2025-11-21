@@ -13,10 +13,6 @@ import {
     setCollectionName,
     clearCollectionName,
 } from '../../Slices/navbarSlice'
-import {
-    fetchClassifications,
-    selectClassificationNameMap,
-} from '../../Slices/classificationAPISlice'
 import Loading from '../../Components/Loading/Loading'
 
 function OneOfMyCollectionsPage() {
@@ -30,10 +26,6 @@ function OneOfMyCollectionsPage() {
     const collections = useSelector((state) => state.collections.items)
     const collectionToShow = collections.find(
         (c) => String(c.id) === String(id)
-    )
-    const classificationNameMap = useSelector(selectClassificationNameMap)
-    const classificationStatus = useSelector(
-        (state) => state.classifications.status
     )
 
     useEffect(() => {
@@ -57,12 +49,6 @@ function OneOfMyCollectionsPage() {
         return () => dispatch(clearCollectionName())
     }, [dispatch, collectionToShow])
 
-    useEffect(() => {
-        if (classificationStatus === 'idle') {
-            dispatch(fetchClassifications())
-        }
-    }, [dispatch, classificationStatus])
-
     return (
         <>
             <section className={styles.wrapper}>
@@ -77,10 +63,6 @@ function OneOfMyCollectionsPage() {
                                 {status === 'succeeded' && (
                                     <CollectionDetails
                                         collectionToShow={collectionToShow}
-                                        classificationNameMap={
-                                            classificationNameMap
-                                        }
-                                        items={items}
                                     />
                                 )}
                             </>
@@ -98,22 +80,24 @@ function OneOfMyCollectionsPage() {
             <h3 className={styles.itemHeader}>Items</h3>
 
             {itemsStatus === 'loading' && <Loading />}
-            <section className={styles.itemContainer}>
-                {items.length <= 0 && <AddItems />}
-                {items.length > 0 && <AddItemButton />}
 
-                <div className={styles.grid}>
-                    {items.map((item) => (
-                        <ItemCard
-                            key={item.id}
-                            item={item}
-                            classificationName={classificationNameMap.get(
-                                String(item.classification_id)
-                            )}
-                        />
-                    ))}
-                </div>
-            </section>
+            {collectionToShow && (
+                <section className={styles.itemContainer}>
+                    {items.length <= 0 && <AddItems />}
+                    {items.length > 0 && <AddItemButton />}
+
+                    <div className={styles.grid}>
+                        {items.map((item) => (
+                            <ItemCard
+                                key={item.id}
+                                item={item}
+                                collectionId={collectionToShow.id}
+                                collectionUserId={collectionToShow.user_id}
+                            />
+                        ))}
+                    </div>
+                </section>
+            )}
         </>
     )
 }

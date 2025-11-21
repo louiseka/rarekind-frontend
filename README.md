@@ -1,39 +1,55 @@
-# RareKind
+# RareKind 🦎
 
-## View live at
+## View Live Site
 
-https://rarekind-frontend.vercel.app/
+[https://rarekind-frontend.vercel.app/](https://rarekind-frontend.vercel.app/)
 
-## Description
+## Project Overview
 
-The RareKind frontend is a React application that allows users to browse collections and items,and manage their personal collections. It will interacts with the RareKind backend through and uses Redux for state management and CSS Modules for styling.
+RareKind is a frontend React application designed to help users browse and manage collections and items. Users can explore public collections, create and edit their own collections, and manage items within those collections. The application interacts with the RareKind backend API, using Redux Toolkit for state management and CSS Modules for styling to ensure a modular and maintainable codebase.
 
-## Features to implement
+## Features
 
-**User Authentication**
+**User Authentication**  
 
--   Login and persistent session
--   Protected routes
+- Login with persistent sessions  
+- Protected routes for authenticated users  
 
-**Collections**
+**Collections Management**  
 
--   Load collections from the backend
--   View individual collection and items
--   Edit collections
--   Add collections and items
--   User-specific collection management
+- Fetch collections from the backend  
+- View individual collections and items  
+- Add, edit, and delete collections and items  
+- Manage user-specific collections  
 
-**React and Redux Toolkit**
+**State Management & Styling**  
 
--   Global state handling for auth and collections
+- Redux Toolkit for global state (authentication, collections)  
+- Component-scoped styling using CSS Modules  
 
-**CSS Modules**
+## Technologies Used
 
--   Component-scoped styling
+- React  
+- Redux Toolkit  
+- React Router  
+- CSS Modules  
 
-## Technologies used
+## Installation (Local Development)
+Follow these steps to set up RareKind on your local machine:
 
--   React
--   Redux Toolkit
--   React Router
--   CSS Modules
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/your-username/rarekind-frontend.git
+   cd rarekind-frontend
+
+2. Install dependencies 
+   ```bash
+   npm install
+
+3. Set up environment variables
+Create a .env file in the root directory and add the necessary variables.   
+   
+4. Start the backend server  
+   ```bash
+   npm run dev 
+

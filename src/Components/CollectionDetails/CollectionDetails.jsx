@@ -1,34 +1,19 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { getTagColorClass } from '../../utils/collections'
+import authService from '../../services/authService'
 
-export const getTagColorClass = (tag) => {
-    const tagLower = tag.toLowerCase()
-    if (tagLower.includes('bird')) return styles.tagBird
-    if (tagLower.includes('mammal')) return styles.tagMammal
-    if (tagLower.includes('fish')) return styles.tagFish
-    if (tagLower.includes('reptile')) return styles.tagReptile
-    if (tagLower.includes('amphibian')) return styles.tagAmphibian
-    return styles.tagDefault
-}
-
-
-export default function CollectionDetails({
-    collectionToShow,
-    classificationNameMap,
-    items,
-}) {
+export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
         new Set(
-            items
-                .map((i) =>
-                    classificationNameMap?.get(String(i.classification_id))
-                )
-                .filter(Boolean)
+            collectionToShow.animals.map((animal) => animal.classification_name)
         )
     )
-
-    const imageUrls = items.map((item) => item.image_url)
+    const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
+    const user = authService.getUser()
+    console.log(user)
+    console.log(collectionToShow.user_id)
 
     return (
         <div className={styles.collectionContainer}>
@@ -55,9 +40,14 @@ export default function CollectionDetails({
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
-                    {tags.map((t) => (
-                        <li key={t} className={`${styles.tag} ${getTagColorClass(t)}`}>
-                            {t}
+                    {tags.map((tag) => (
+                        <li
+                            key={tag}
+                            className={`${styles.tag} ${getTagColorClass(
+                                tag
+                            )} `}
+                        >
+                            {tag}
                         </li>
                     ))}
                 </ul>
@@ -65,21 +55,18 @@ export default function CollectionDetails({
             <div className={styles.statusContainer}>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>CREATED: </span>
-                    <time dateTime={collectionToShow.date_created}>
-                        {new Date(
-                            collectionToShow.date_created
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.created_at}>
+                        {new Date(collectionToShow.created_at).toLocaleString()}
                     </time>
                 </p>
                 <p className={styles.statusDetails}>
                     <span className={styles.statusTitle}>LAST UPDATED:</span>
-                    <time dateTime={collectionToShow.date_updated}>
-                        {new Date(
-                            collectionToShow.date_updated
-                        ).toLocaleString()}
+                    <time dateTime={collectionToShow.updated_at}>
+                        {new Date(collectionToShow.updated_at).toLocaleString()}
                     </time>
                 </p>
             </div>
+            {user.id === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
                 <button className={styles.editCollectionButton}>
                     <FaPencil className={styles.icon} />
@@ -89,7 +76,7 @@ export default function CollectionDetails({
                     <FaTrashCan className={styles.icon} />
                     DELETE COLLECTION
                 </button>
-            </div>
+            </div>)}
         </div>
     )
 }

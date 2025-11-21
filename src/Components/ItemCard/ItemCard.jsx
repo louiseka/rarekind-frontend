@@ -2,13 +2,26 @@ import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
-import { getTagColorClass } from '../CollectionDetails/CollectionDetails'
+import { deleteItem } from '../../Slices/deleteItemAPISlice'
+import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
+import { getTagColorClass } from '../../utils/collections'
+import authService from '../../services/authService'
 
-export default function ItemCard({ item, classificationName }) {
-    const t = classificationName
-        const dispatch = useDispatch()
+export default function ItemCard({ item, collectionId, collectionUserId }) {
+    const dispatch = useDispatch()
+    const user = authService.getUser()
+    const userOwnsCollection = user.id === collectionUserId
+    console.log(userOwnsCollection)
 
-    
+    const deleteAnimal = async () => {
+        try {
+            await dispatch(deleteItem(item.id))
+            await dispatch(fetchItemsByCollectionId(collectionId))
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     return (
         <div className={styles.card}>
             {item.image_url && (
@@ -22,24 +35,35 @@ export default function ItemCard({ item, classificationName }) {
             )}
             <div className={styles.cardHeaderContainer}>
                 <h3 className={styles.cardHeader}>{item.name}</h3>
-                <p className={`${styles.tag} ${getTagColorClass(t)}`}>{classificationName}</p>
+                {item.classification_name && (
+                    <p
+                        className={`${styles.tag} ${getTagColorClass(
+                            item.classification_name
+                        )} `}
+                    >
+                        {item.classification_name}
+                    </p>
+                )}
             </div>
             <p className={styles.cardDescription}>{item.description}</p>
-            <div className={styles.buttonContainer}>
-                <button
-                    className={styles.editButton}
-                    onClick={() => dispatch(openPopup('edititem'))}
-                    aria-label={`Edit the animal ${item.name}`}
-                >
-                    <FaPencil />
-                </button>
-                <button
-                    className={styles.deleteButton}
-                    aria-label={`Delete the animal ${item.name}`}
-                >
-                    <FaTrashCan />
-                </button>
-            </div>
+            {userOwnsCollection && (
+                <div className={styles.buttonContainer}>
+                    <button
+                        className={styles.editButton}
+                        onClick={() => dispatch(openPopup('edititem'))}
+                        aria-label={`Edit the animal ${item.name}`}
+                    >
+                        <FaPencil />
+                    </button>
+                    <button
+                        className={styles.deleteButton}
+                        onClick={deleteAnimal}
+                        aria-label={`Delete the animal ${item.name}`}
+                    >
+                        <FaTrashCan />
+                    </button>
+                </div>
+            )}
         </div>
     )
 }
