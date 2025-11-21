@@ -1,32 +1,14 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 
-// export const getTagColorClass = (tag) => {
-//     const tagLower = tag.toLowerCase()
-//     if (tagLower.includes('bird')) return styles.tagBird
-//     if (tagLower.includes('mammal')) return styles.tagMammal
-//     if (tagLower.includes('fish')) return styles.tagFish
-//     if (tagLower.includes('reptile')) return styles.tagReptile
-//     if (tagLower.includes('amphibian')) return styles.tagAmphibian
-//     return styles.tagDefault
-// }
-
-export default function CollectionDetails({
-    collectionToShow,
-    classificationNameMap,
-    items,
-}) {
+export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
         new Set(
-            items
-                .map((i) =>
-                    classificationNameMap?.get(String(i.classification_id))
-                )
-                .filter(Boolean)
+            collectionToShow.animals.map((animal) => animal.classification_name)
         )
     )
 
-    const imageUrls = items.map((item) => item.image_url)
+    const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
 
     return (
@@ -54,10 +36,10 @@ export default function CollectionDetails({
             <div className={styles.tagsContainer}>
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
-                    {tags.map((t) => (
-                        <li key={t} className={`${styles.tag} `}>
+                    {tags.map((tag) => (
+                        <li key={tag} className={`${styles.tag} `}>
                             {/* ${getTagColorClass(t)} */}
-                            {t}
+                            {tag}
                         </li>
                     ))}
                 </ul>
