@@ -10,14 +10,17 @@ export default function CollectionCard({ collection }) {
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <h3 className={styles.cardHeader}>{collection.name}</h3>
 
-            {tags.map((tag) => (
-                <p
-                    key={tag}
-                    className={`${styles.cardTag} ${getTagColorClass(tag)} `}
-                >
-                    {tag}
-                </p>
-            ))}
+            {tags &&
+                tags.map((tag) => (
+                    <p
+                        key={tag}
+                        className={`${styles.cardTag} ${getTagColorClass(
+                            tag
+                        )} `}
+                    >
+                        {tag}
+                    </p>
+                ))}
 
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Created:</span>{' '}
