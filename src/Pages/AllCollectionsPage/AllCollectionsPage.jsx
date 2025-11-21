@@ -11,7 +11,7 @@ import { useSort } from '../../Components/CollectionFilter/SortContext'
 import {
     sortCollections,
     searchCollectionsByQuery,
-} from '../../../utils/collections'
+} from '../../utils/collections'
 
 export default function AllCollectionsPage() {
     const dispatch = useDispatch()

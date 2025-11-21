@@ -1,5 +1,6 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
+import { getTagColorClass } from '../../utils/collections'
 
 export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
@@ -37,8 +38,12 @@ export default function CollectionDetails({ collectionToShow }) {
                 <h4 className={styles.title}>TAGS</h4>
                 <ul className={styles.tagList}>
                     {tags.map((tag) => (
-                        <li key={tag} className={`${styles.tag} `}>
-                            {/* ${getTagColorClass(t)} */}
+                        <li
+                            key={tag}
+                            className={`${styles.tag} ${getTagColorClass(
+                                tag
+                            )} `}
+                        >
                             {tag}
                         </li>
                     ))}

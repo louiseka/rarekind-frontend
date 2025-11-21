@@ -1,5 +1,6 @@
 import styles from './CollectionCard.module.css'
 import { Link } from 'react-router-dom'
+import { getTagColorClass } from '../../utils/collections'
 
 export default function CollectionCard({ collection }) {
     const tags = Array.from(
@@ -10,7 +11,10 @@ export default function CollectionCard({ collection }) {
             <h3 className={styles.cardHeader}>{collection.name}</h3>
 
             {tags.map((tag) => (
-                <p key={tag} className={styles.cardTag}>
+                <p
+                    key={tag}
+                    className={`${styles.cardTag} ${getTagColorClass(tag)} `}
+                >
                     {tag}
                 </p>
             ))}
