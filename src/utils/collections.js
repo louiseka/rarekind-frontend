@@ -2,9 +2,9 @@ export function sortCollections(collections, sortOrder) {
     return [...collections].sort((a, b) => {
         switch (sortOrder) {
             case 'title-a-z':
-                return a.name.localeCompare(b.name)
+                return a.name?.localeCompare(b.name)
             case 'title-z-a':
-                return b.name.localeCompare(a.name)
+                return b.name?.localeCompare(a.name)
             case 'most-recent':
                 return new Date(b.createdAt) - new Date(a.createdAt)
             default:
@@ -14,9 +14,10 @@ export function sortCollections(collections, sortOrder) {
 }
 
 export function searchCollectionsByQuery(collections, query) {
+    console.log(collections, query)
     if (!query.trim()) return collections
     return collections.filter((collection) =>
-        collection.name.toLowerCase().includes(query.toLowerCase())
+        collection.name?.toLowerCase().includes(query.toLowerCase())
     )
 }
 

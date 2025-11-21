@@ -80,16 +80,23 @@ function OneOfMyCollectionsPage() {
             <h3 className={styles.itemHeader}>Items</h3>
 
             {itemsStatus === 'loading' && <Loading />}
-            <section className={styles.itemContainer}>
-                {items.length <= 0 && <AddItems />}
-                {items.length > 0 && <AddItemButton />}
 
-                <div className={styles.grid}>
-                    {items.map((item) => (
-                        <ItemCard key={item.id} item={item} />
-                    ))}
-                </div>
-            </section>
+            {collectionToShow && (
+                <section className={styles.itemContainer}>
+                    {items.length <= 0 && <AddItems />}
+                    {items.length > 0 && <AddItemButton />}
+
+                    <div className={styles.grid}>
+                        {items.map((item) => (
+                            <ItemCard
+                                key={item.id}
+                                item={item}
+                                collectionId={collectionToShow.id}
+                            />
+                        ))}
+                    </div>
+                </section>
+            )}
         </>
     )
 }
