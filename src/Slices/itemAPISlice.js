@@ -4,21 +4,14 @@ import makeApiRequest from '../services/apiService'
 export const fetchItemsByCollectionId = createAsyncThunk(
     'items/fetchItemsByCollectionId',
     async (collectionId) => {
-        
-        const data = await makeApiRequest('animals')
+        const data = await makeApiRequest(`collections/${collectionId}/animals`)
 
         // normalize the API response in case data is not an array
 
         let items = []
-        if (Array.isArray(data)) {
-            items = data
+        if (Array.isArray(data.animals)) {
+            items = data.animals
         }
-
-        // filter items by collection Id
-
-        items = items.filter(
-            (item) => String(item.collection_id) === String(collectionId)
-        )
         return items
     }
 )
