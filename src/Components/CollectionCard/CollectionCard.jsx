@@ -1,24 +1,19 @@
 import styles from './CollectionCard.module.css'
 import { Link } from 'react-router-dom'
-// import { useSelector } from 'react-redux'
-// import { selectClassificationNameMap } from '../../Slices/classificationAPISlice.js'
 
-export default function CollectionCard({ collection, items }) {
-    // const classificationNameMap = useSelector(selectClassificationNameMap)
-    // const tags = Array.from(
-    //     new Set(
-    //         items
-    //             .map((i) =>
-    //                 classificationNameMap?.get(String(i.classification_id))
-    //             )
-    //             .filter(Boolean)
-    //     )
-    // )
+export default function CollectionCard({ collection }) {
+    const tags = Array.from(
+        new Set(collection.animals.map((animal) => animal.classification_name))
+    )
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <h3 className={styles.cardHeader}>{collection.name}</h3>
 
-            <p className={styles.cardTag}>Tag</p>
+            {tags.map((tag) => (
+                <p key={tag} className={styles.cardTag}>
+                    {tag}
+                </p>
+            ))}
 
             <p className={styles.cardDetails}>
                 <span className={styles.cardStatusTitle}>Created:</span>{' '}
