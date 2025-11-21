@@ -98,3 +98,21 @@ p {
     margin: 0;
     line-height: 1.5;
 }
+
+.tagReptile {
+    background-color: rgb(0, 193, 0);
+}
+.tagMammal {
+    background-color: rgb(216, 40, 40);
+}
+
+.tagFish {
+    background-color: rgb(35, 35, 239);
+}
+
+.tagAmphibian {
+    background-color: rgb(231, 12, 231);
+}
+.tagBird {
+    background-color: rgb(136, 136, 26);
+}
