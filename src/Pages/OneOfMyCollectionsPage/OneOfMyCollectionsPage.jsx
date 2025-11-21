@@ -94,6 +94,7 @@ function OneOfMyCollectionsPage() {
                                 key={item.id}
                                 item={item}
                                 collectionId={collectionToShow.id}
+                                collectionUserId={collectionToShow.user_id}
                             />
                         ))}
                     </div>

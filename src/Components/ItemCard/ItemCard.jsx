@@ -1,25 +1,14 @@
 import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
 import { deleteItem } from '../../Slices/deleteItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import { getTagColorClass } from '../../utils/collections'
 import authService from '../../services/authService'
 
-export default function ItemCard({ item, collectionId }) {
+export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
-    const user = authService.getUser().id
-    console.log(user)
-
-    const collectionUserId = useSelector(
-        (state) =>
-            state.collections.items.find(
-                (c) => String(c.id) === String(collectionId)
-            ).user_id
-    )
-
-    console.log(collectionUserId)
 
     const deleteAnimal = async () => {
         try {
@@ -53,9 +42,8 @@ export default function ItemCard({ item, collectionId }) {
                     </p>
                 )}
             </div>
-
             <p className={styles.cardDescription}>{item.description}</p>
-           { user === collectionUserId && (<div className={styles.buttonContainer}>
+            <div className={styles.buttonContainer}>
                 <button
                     className={styles.editButton}
                     onClick={() => dispatch(openPopup('edititem'))}
@@ -70,7 +58,7 @@ export default function ItemCard({ item, collectionId }) {
                 >
                     <FaTrashCan />
                 </button>
-            </div>)}
+            </div>
         </div>
     )
 }
