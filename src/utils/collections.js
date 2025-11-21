@@ -19,3 +19,13 @@ export function searchCollectionsByQuery(collections, query) {
         collection.name.toLowerCase().includes(query.toLowerCase())
     )
 }
+
+export function getTagColorClass(tag) {
+    const tagLower = tag.toLowerCase()
+    if (tagLower.includes('bird')) return 'tagBird'
+    if (tagLower.includes('mammal')) return 'tagMammal'
+    if (tagLower.includes('fish')) return 'tagFish'
+    if (tagLower.includes('reptile')) return 'tagReptile'
+    if (tagLower.includes('amphibian')) return 'tagAmphibian'
+    return tagDefault
+}
