@@ -9,9 +9,9 @@ import authService from '../../services/authService'
 
 export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
-    const user = authService.getUser()
-    const userOwnsCollection = user.id === collectionUserId
-    console.log(userOwnsCollection)
+    const user = authService.getUser().id
+    console.log(user)
+    console.log(collectionUserId)
 
     const deleteAnimal = async () => {
         try {
@@ -46,24 +46,22 @@ export default function ItemCard({ item, collectionId, collectionUserId }) {
                 )}
             </div>
             <p className={styles.cardDescription}>{item.description}</p>
-            {userOwnsCollection && (
-                <div className={styles.buttonContainer}>
-                    <button
-                        className={styles.editButton}
-                        onClick={() => dispatch(openPopup('edititem'))}
-                        aria-label={`Edit the animal ${item.name}`}
-                    >
-                        <FaPencil />
-                    </button>
-                    <button
-                        className={styles.deleteButton}
-                        onClick={deleteAnimal}
-                        aria-label={`Delete the animal ${item.name}`}
-                    >
-                        <FaTrashCan />
-                    </button>
-                </div>
-            )}
+           { (user === collectionUserId) && (<div className={styles.buttonContainer}>
+                <button
+                    className={styles.editButton}
+                    onClick={() => dispatch(openPopup('edititem'))}
+                    aria-label={`Edit the animal ${item.name}`}
+                >
+                    <FaPencil />
+                </button>
+                <button
+                    className={styles.deleteButton}
+                    onClick={deleteAnimal}
+                    aria-label={`Delete the animal ${item.name}`}
+                >
+                    <FaTrashCan />
+                </button>
+            </div>)}
         </div>
     )
 }

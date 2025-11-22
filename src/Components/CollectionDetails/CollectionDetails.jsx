@@ -11,8 +11,9 @@ export default function CollectionDetails({ collectionToShow }) {
     )
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
-    const user = authService.getUser()
+    const user = authService.getUser().id
     console.log(user)
+    console.log(collectionToShow.user_id)
     console.log(collectionToShow.user_id)
 
     return (
@@ -66,7 +67,7 @@ export default function CollectionDetails({ collectionToShow }) {
                     </time>
                 </p>
             </div>
-            {user.id === collectionToShow.user_id && (
+            {user === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
                 <button className={styles.editCollectionButton}>
                     <FaPencil className={styles.icon} />
