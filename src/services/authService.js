@@ -17,10 +17,7 @@ const login = async (email, password) => {
         sessionStorage.setItem('accessToken', response.accessToken)
     }
 
-     const user = { id: response.id, name: response.name }
-    sessionStorage.setItem('user', JSON.stringify(user))
-
-    return user
+    return { id: response.id, name: response.name }
 }
 
 const logout = async () => {
@@ -50,10 +47,6 @@ const isLoggedIn = () => {
     return !!sessionStorage.getItem('accessToken')
 }
 
-const getUser = () => {
-    return JSON.parse(sessionStorage.getItem('user'))
-}
-
 export default {
     register,
     login,
@@ -61,5 +54,4 @@ export default {
     getAccessToken,
     refreshAccessToken,
     isLoggedIn,
-    getUser,
 }
