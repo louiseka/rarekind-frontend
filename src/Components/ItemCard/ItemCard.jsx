@@ -9,7 +9,7 @@ import authService from '../../services/authService'
 
 export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
-    const user = authService.getUser().id
+    const user = authService.getUser()?.id
     console.log(user)
     console.log(collectionUserId)
 
@@ -46,7 +46,7 @@ export default function ItemCard({ item, collectionId, collectionUserId }) {
                 )}
             </div>
             <p className={styles.cardDescription}>{item.description}</p>
-           { (user === collectionUserId) && (<div className={styles.buttonContainer}>
+           { (user && user === collectionUserId) && (<div className={styles.buttonContainer}>
                 <button
                     className={styles.editButton}
                     onClick={() => dispatch(openPopup('edititem'))}
