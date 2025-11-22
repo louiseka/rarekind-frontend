@@ -1,7 +1,7 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { getTagColorClass } from '../../utils/collections'
-import authService from '../../services/authService'
+import { useSelector } from 'react-redux'
 
 export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
@@ -11,7 +11,7 @@ export default function CollectionDetails({ collectionToShow }) {
     )
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
-    const user = authService.getUser()?.id
+    const user = useSelector((state) => state.auth.user)?.id
     console.log(user)
     console.log(collectionToShow.user_id)
     console.log(collectionToShow.user_id)
