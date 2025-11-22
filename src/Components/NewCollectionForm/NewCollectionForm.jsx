@@ -4,13 +4,15 @@ import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
 import { addCollection } from '../../Slices/addCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
+import authService from '../../services/authService'
 
 function NewCollectionForm() {
     const dispatch = useDispatch()
     const status = useSelector((state) => state.addCollection.status)
     const [errorMessage, setErrorMessage] = useState('')
+    const user = authService.getUser()?.id
     const [formData, setFormData] = useState({
-        user_id: '',
+        user_id: user,
         name: '',
         description: '',
         image_url: '',

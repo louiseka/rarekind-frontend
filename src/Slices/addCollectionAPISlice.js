@@ -3,12 +3,12 @@ import makeApiRequest from '../services/apiService'
 
 export const addCollection = createAsyncThunk(
     'collection/addCollection',
-    async ({ updatedData }) => {
+    async ({ formData }) => {
         const response = await makeApiRequest(
             `collections`,
             {
                 method: 'POST',
-                body: JSON.stringify(updatedData),
+                body: JSON.stringify(formData),
             }
         )
         return response

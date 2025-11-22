@@ -22,5 +22,7 @@ export const store = configureStore({
         navbar: navbarReducer,
         classifications: classificationReducer,
         addItem: addItemReducer,
+        deleteItem: deleteItemReducer,
+        addCollection: addCollectionReducer,
     },
 })
