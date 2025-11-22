@@ -1,7 +1,7 @@
 .wrapper {
     background-color: var(--color-background-feature);
     width: 80%;
-    max-width: 500px;
+    max-width: 400px;
     min-width: 300px;
     display: flex;
     flex-direction: column;
@@ -34,7 +34,7 @@ h2 {
 .form {
     display: flex;
     flex-direction: column;
-    
+    width: 80%;
 }
 
 .title {
@@ -53,7 +53,21 @@ h2 {
     font-family: var(--font-family-body);
     color: var(--color-text-light-gray);
     width: 100%;
-    padding:  16px 8px 16px;
+    height: 100px;
+    padding: 8px;
+    font-size: 1rem;
+    background: var(--color-background-black);
+    border: 1px solid var(--color-text-mid-gray);
+    border-radius: 4px;
+    margin: 10px auto;
+    resize: vertical;
+}
+
+.image {
+    font-family: var(--font-family-body);
+    color: var(--color-text-light-gray);
+    width: 100%;
+    padding: 8px;
     font-size: 1rem;
     background: var(--color-background-black);
     border: 1px solid var(--color-text-mid-gray);
@@ -61,29 +75,19 @@ h2 {
     margin: 10px auto;
 }
 
-.tags {
-    font-family: var(--font-family-body);
-    color: var(--color-text-light-gray);
-    width: 100%;
-    padding:  16px 8px 16px;
-    font-size: 1rem;
-    background: var(--color-background-black);
+.select {
+    background-color: transparent;
     border: 1px solid var(--color-text-mid-gray);
     border-radius: 4px;
-    margin: 10px auto;
+    font-family: var(--font-family-body);
+    font-size: 1.1rem;
+    padding: 0.5em 1em;
+    margin: 1em 0;
+    color: var(--color-text-mid-gray);
+    cursor: pointer;
+    width: 100%;
 }
 
-.species {
-    font-family: var(--font-family-body);
-    color: var(--color-text-light-gray);
-    width: 100%;
-    padding:  16px 8px 16px;
-    font-size: 1rem;
-    background: var(--color-background-black);
-    border: 1px solid var(--color-text-mid-gray);
-    border-radius: 4px;
-    margin: 10px auto;
-}
 
 .button {
     background: var(--color-text-mid-gray);
