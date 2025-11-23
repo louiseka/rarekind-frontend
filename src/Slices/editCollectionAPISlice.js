@@ -4,10 +4,11 @@ import makeApiRequest from '../services/apiService'
 export const editCollection = createAsyncThunk(
     'collection/editCollection',
     async ({ formData }) => {
-        const response = await makeApiRequest(`collections`, {
+        const response = await makeApiRequest(`collections/${formData.id}`, {
             method: 'PUT',
             body: JSON.stringify(formData),
         })
+        console.log(formData.id)
         return response
     }
 )

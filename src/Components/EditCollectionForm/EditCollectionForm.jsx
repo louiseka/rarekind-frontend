@@ -11,12 +11,17 @@ function EditCollectionForm() {
     const status = useSelector((state) => state.editCollection.status)
     const [errorMessage, setErrorMessage] = useState('')
     const user = useSelector((state) => state.auth.user)?.id
+    const id = window.location.pathname.split('/')[2]
     const [formData, setFormData] = useState({
+        id: id,
         user_id: user,
         name: '',
         description: '',
     })
-
+    console.log('Editing collection with data:', formData)
+    console.log(formData.id)
+    console.log('Collection ID:', id)
+    console.log('User ID:', user)
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
