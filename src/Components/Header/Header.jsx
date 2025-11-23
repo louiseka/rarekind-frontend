@@ -2,13 +2,13 @@ import styles from './Header.module.css'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
 import DarkMode from '../DarkMode/DarkMode'
-import authService from '../../services/authService'
 import { logout } from '../../Slices/authSlice'
 import { useSelector } from 'react-redux'
 
 function Header() {
     const dispatch = useDispatch()
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
+    const user = useSelector((state) => state.auth.user)
 
     const handleLogout = () => {
         dispatch(logout())
@@ -26,6 +26,9 @@ function Header() {
                 <div className={styles.userButtons}>
                     {isLoggedIn ? (
                         <>
+                            <span className={styles.userName}>
+                                 {user.name}
+                            </span>
                             <button
                                 className={styles.userButton}
                                 onClick={handleLogout}

@@ -26,6 +26,7 @@
 
 .userButtons {
     padding: 20px 5px 10px 5px;
+    width: fit-content;
 }
 
 .userButton {
@@ -42,6 +43,14 @@
 
 .userButton:hover {
     color: var(--color-primary);
+}
+
+.userName {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    width: 150px;
+    text-align: right;
 }
 
 /* dark mode slider styles */
@@ -107,5 +116,10 @@ input:checked + .slider:before {
 
     .uiSection {
         margin-top: 20px;
+    }
+
+    .userName {
+        right: 10px;
+        top: 25px;
     }
 }
