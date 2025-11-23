@@ -10,8 +10,7 @@ import { getTagColorClass } from '../../utils/collections'
 export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)?.id
-    console.log(user)
-    console.log(collectionUserId)
+   
 
     const deleteAnimal = async () => {
         try {

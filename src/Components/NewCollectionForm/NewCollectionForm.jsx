@@ -1,16 +1,16 @@
 import styles from './NewCollectionForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { useState } from 'react'
+import { use, useState } from 'react'
 import { addCollection } from '../../Slices/addCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
-import authService from '../../services/authService'
+
 
 function NewCollectionForm() {
     const dispatch = useDispatch()
     const status = useSelector((state) => state.addCollection.status)
     const [errorMessage, setErrorMessage] = useState('')
-    const user = authService.getUser()?.id
+    const user = useSelector((state) => state.auth.user)?.id
     const [formData, setFormData] = useState({
         user_id: user,
         name: '',
@@ -19,7 +19,6 @@ function NewCollectionForm() {
         classifications: '',
     })
 
-    console.log(formData)
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })

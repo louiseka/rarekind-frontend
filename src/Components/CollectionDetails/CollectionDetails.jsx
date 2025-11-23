@@ -12,9 +12,6 @@ export default function CollectionDetails({ collectionToShow }) {
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
     const user = useSelector((state) => state.auth.user)?.id
-    console.log(user)
-    console.log(collectionToShow.user_id)
-    console.log(collectionToShow.user_id)
 
     return (
         <div className={styles.collectionContainer}>
