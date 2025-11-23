@@ -15,7 +15,6 @@ import {
 } from '../../Slices/navbarSlice'
 import Loading from '../../Components/Loading/Loading'
 
-
 function OneOfMyCollectionsPage() {
     const [showContent, setShowContent] = useState(true)
     const dispatch = useDispatch()
@@ -85,8 +84,12 @@ function OneOfMyCollectionsPage() {
 
             {collectionToShow && (
                 <section className={styles.itemContainer}>
-                    {user && user === collectionToShow.user_id && (items.length <= 0 && <AddItems />)}
-                    {user && user === collectionToShow.user_id && (items.length > 0 && <AddItemButton />)}
+                    {user &&
+                        user === collectionToShow.user_id &&
+                        items.length <= 0 && <AddItems />}
+                    {user &&
+                        user === collectionToShow.user_id &&
+                        items.length > 0 && <AddItemButton />}
 
                     <div className={styles.grid}>
                         {items.map((item) => (
