@@ -2,21 +2,19 @@ import styles from './EditCollectionForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
-import { addCollection } from '../../Slices/addCollectionAPISlice'
+import { editCollection } from '../../Slices/editCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
 
 
 function EditCollectionForm() {
     const dispatch = useDispatch()
-    const status = useSelector((state) => state.addCollection.status)
+    const status = useSelector((state) => state.editCollection.status)
     const [errorMessage, setErrorMessage] = useState('')
     const user = useSelector((state) => state.auth.user)?.id
     const [formData, setFormData] = useState({
         user_id: user,
         name: '',
         description: '',
-        image_url: '',
-        classifications: '',
     })
 
 
@@ -28,7 +26,7 @@ function EditCollectionForm() {
         e.preventDefault()
         setErrorMessage('')
         try {
-            await dispatch(addCollection({ formData })).unwrap()
+            await dispatch(editCollection({ formData })).unwrap()
             console.log('Collection edited successfully')
             await dispatch(fetchCollections()).unwrap()
             dispatch(closePopup())
