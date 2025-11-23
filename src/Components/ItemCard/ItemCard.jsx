@@ -1,13 +1,16 @@
 import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
 import { deleteItem } from '../../Slices/deleteItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import { getTagColorClass } from '../../utils/collections'
 
-export default function ItemCard({ item, collectionId }) {
+
+export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
+    const user = useSelector((state) => state.auth.user)?.id
+   
 
     const deleteAnimal = async () => {
         try {
@@ -41,24 +44,25 @@ export default function ItemCard({ item, collectionId }) {
                     </p>
                 )}
             </div>
-
             <p className={styles.cardDescription}>{item.description}</p>
-            <div className={styles.buttonContainer}>
-                <button
-                    className={styles.editButton}
-                    onClick={() => dispatch(openPopup('edititem'))}
-                    aria-label={`Edit the animal ${item.name}`}
-                >
-                    <FaPencil />
-                </button>
-                <button
-                    className={styles.deleteButton}
-                    onClick={deleteAnimal}
-                    aria-label={`Delete the animal ${item.name}`}
-                >
-                    <FaTrashCan />
-                </button>
-            </div>
+            {user && user === collectionUserId && (
+                <div className={styles.buttonContainer}>
+                    <button
+                        className={styles.editButton}
+                        onClick={() => dispatch(openPopup('edititem'))}
+                        aria-label={`Edit the animal ${item.name}`}
+                    >
+                        <FaPencil />
+                    </button>
+                    <button
+                        className={styles.deleteButton}
+                        onClick={deleteAnimal}
+                        aria-label={`Delete the animal ${item.name}`}
+                    >
+                        <FaTrashCan />
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

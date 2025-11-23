@@ -15,6 +15,7 @@ import {
 } from '../../Slices/navbarSlice'
 import Loading from '../../Components/Loading/Loading'
 
+
 function OneOfMyCollectionsPage() {
     const [showContent, setShowContent] = useState(true)
     const dispatch = useDispatch()
@@ -24,6 +25,7 @@ function OneOfMyCollectionsPage() {
     const { id } = useParams()
     const status = useSelector((state) => state.collections.status)
     const collections = useSelector((state) => state.collections.items)
+    const user = useSelector((state) => state.auth.user)?.id
     const collectionToShow = collections.find(
         (c) => String(c.id) === String(id)
     )
@@ -83,8 +85,8 @@ function OneOfMyCollectionsPage() {
 
             {collectionToShow && (
                 <section className={styles.itemContainer}>
-                    {items.length <= 0 && <AddItems />}
-                    {items.length > 0 && <AddItemButton />}
+                    {user && user === collectionToShow.user_id && (items.length <= 0 && <AddItems />)}
+                    {user && user === collectionToShow.user_id && (items.length > 0 && <AddItemButton />)}
 
                     <div className={styles.grid}>
                         {items.map((item) => (
@@ -92,6 +94,7 @@ function OneOfMyCollectionsPage() {
                                 key={item.id}
                                 item={item}
                                 collectionId={collectionToShow.id}
+                                collectionUserId={collectionToShow.user_id}
                             />
                         ))}
                     </div>

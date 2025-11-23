@@ -1,6 +1,5 @@
 import AddItemButton from '../AddItemButton/AddItemButton'
 import styles from './AddItems.module.css'
-
 import { FaInbox } from 'react-icons/fa6'
 
 export default function AddItems() {

@@ -1,6 +1,7 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { getTagColorClass } from '../../utils/collections'
+import { useSelector } from 'react-redux'
 
 export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
@@ -8,9 +9,9 @@ export default function CollectionDetails({ collectionToShow }) {
             collectionToShow.animals.map((animal) => animal.classification_name)
         )
     )
-
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
+    const user = useSelector((state) => state.auth.user)?.id
 
     return (
         <div className={styles.collectionContainer}>
@@ -63,6 +64,7 @@ export default function CollectionDetails({ collectionToShow }) {
                     </time>
                 </p>
             </div>
+            {user && user === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
                 <button className={styles.editCollectionButton}>
                     <FaPencil className={styles.icon} />
@@ -72,7 +74,7 @@ export default function CollectionDetails({ collectionToShow }) {
                     <FaTrashCan className={styles.icon} />
                     DELETE COLLECTION
                 </button>
-            </div>
+            </div>)}
         </div>
     )
 }
