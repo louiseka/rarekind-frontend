@@ -5,6 +5,7 @@ import SignupForm from '../SignupForm/SignupForm.jsx'
 import NewCollectionForm from '../NewCollectionForm/NewCollectionForm.jsx'
 import AddItemForm from '../AddItemForm/AddItemForm.jsx'
 import EditItemForm from '../EditItemForm.jsx/EditItemForm.jsx'
+import EditCollectionForm from '../EditCollectionForm/EditCollectionForm.jsx'
 
 function PopupRoot() {
     const selectedPopup = useSelector((state) => state.popup.selectedPopup)
@@ -44,6 +45,14 @@ function PopupRoot() {
         return (
             <div className={styles.backdrop}>
                 <EditItemForm />
+            </div>
+        )
+    }
+
+    if (selectedPopup === 'editcollection') {
+        return (
+            <div className={styles.backdrop}>
+                <EditCollectionForm />
             </div>
         )
     }

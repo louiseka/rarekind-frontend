@@ -24,11 +24,12 @@ function Header() {
             <div className={styles.uiSection}>
                 <DarkMode />
                 <div className={styles.userButtons}>
+                    {isLoggedIn && (<span className={styles.userName}>
+                        {user?.name}
+                    </span>
+                    )}
                     {isLoggedIn ? (
                         <>
-                            <span className={styles.userName}>
-                                 {user.name}
-                            </span>
                             <button
                                 className={styles.userButton}
                                 onClick={handleLogout}

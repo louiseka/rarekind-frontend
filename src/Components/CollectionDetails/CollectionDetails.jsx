@@ -2,6 +2,7 @@ import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { getTagColorClass } from '../../utils/collections'
 import { useSelector } from 'react-redux'
+import { openPopup } from '../../Slices/popupSlice'
 
 export default function CollectionDetails({ collectionToShow }) {
     const tags = Array.from(
@@ -67,7 +68,7 @@ export default function CollectionDetails({ collectionToShow }) {
             {user && user === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
                 <button className={styles.editCollectionButton}>
-                    <FaPencil className={styles.icon} />
+                    <FaPencil className={styles.icon} onClick={() => openPopup('editcollection')}/>
                     EDIT COLLECTION
                 </button>
                 <button className={styles.deleteCollectionButton}>
