@@ -1,10 +1,9 @@
 import styles from './NewCollectionForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { use, useState } from 'react'
+import { useState } from 'react'
 import { addCollection } from '../../Slices/addCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
-import { useNavigate } from 'react-router-dom' 
 
 function NewCollectionForm() {
     const dispatch = useDispatch()
@@ -17,7 +16,6 @@ function NewCollectionForm() {
         description: '',
     })
 
-
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
@@ -26,10 +24,13 @@ function NewCollectionForm() {
         e.preventDefault()
         setErrorMessage('')
         try {
-            await dispatch(addCollection({ formData })).unwrap()
+            const newCollection = await dispatch(
+                addCollection({ formData })
+            ).unwrap()
             console.log('Collection added successfully')
             await dispatch(fetchCollections()).unwrap()
             dispatch(closePopup())
+            window.location.href = `/collection/${newCollection.id}`
         } catch (error) {
             console.error('Error adding collection:', error)
             setErrorMessage(error.message || 'Failed to create collection')
