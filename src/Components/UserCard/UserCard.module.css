@@ -1,0 +1,51 @@
+
+
+.card {
+    border: 2px solid var(--color-background-feature);
+    border-radius: var(--border-radius-s);
+    width: 100%;
+    height: 150px;
+    background-color: var(--color-background-feature);
+    padding: 1.5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.card:hover {
+    background-color: #3a3a40;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:active,
+.card:focus {
+    background-color: #3a3a40;
+}
+
+
+
+.cardHeader {
+    padding: 0 0 0.5em;
+    font-weight: 600;
+    color: var(--color-text-light-gray);
+}
+
+.cardDetails {
+    font-size: var(--font-size-small);
+    color: var(--color-text-light-gray);
+    padding: 1em 0 0;
+}
+
+.cardImage {
+    height: 100px;
+    width: 100px;
+    border-radius: var(--border-radius-m);
+    object-fit: cover;
+}
+
+.imageContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -8,6 +8,8 @@ import { useEffect } from 'react'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
 import { useSearch } from '../../Components/CollectionSearch/SearchContext'
 import { useSort } from '../../Components/CollectionFilter/SortContext'
+import AddCollectionButton from '../../Components/AddCollectionButton/AddCollectionButton'
+import AddCollections from '../../Components/AddCollections/AddCollections.jsx'
 import {
     sortCollections,
     searchCollectionsByQuery,
@@ -44,10 +46,16 @@ export default function MyCollectionsPage() {
 
     return (
         <section className={styles.wrapper}>
-            <div className={styles.inputContainer}>
+            {user && userCollections.length === 0?  (
+                <>
+                <AddCollections/> 
+                <AddCollectionButton />
+                </>
+            ) :
+            (<div className={styles.inputContainer}>
                 <CollectionSearch />
                 <CollectionFilter />
-            </div>
+            </div>)}
             {status === 'loading' && <Loading />}
 
             {showSearchResults && searchedCollections.length === 0 && (
