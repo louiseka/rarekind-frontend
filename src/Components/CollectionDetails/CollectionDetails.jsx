@@ -15,16 +15,16 @@ export default function CollectionDetails({ collectionToShow }) {
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
     const user = useSelector((state) => state.auth.user)?.id
-    const dispatch = useDispatch()
-
     const handleDeleteCollection = async () => {
-            try {
-                await dispatch(deleteCollection({ collectionId: collectionToShow.id })).unwrap()
-                window.location.href = '/mycollections'
-            } catch (error) {
-                console.error(error)
-            }
+        try {
+            await dispatch(
+                deleteCollection({ collectionId: collectionToShow.id })
+            ).unwrap()
+            window.location.href = '/mycollections'
+        } catch (error) {
+            console.error(error)
         }
+    }
 
     return (
         <div className={styles.collectionContainer}>
@@ -78,16 +78,23 @@ export default function CollectionDetails({ collectionToShow }) {
                 </p>
             </div>
             {user && user === collectionToShow.user_id && (
-            <div className={styles.buttonContainer}>
-                <button className={styles.editCollectionButton} onClick={() => dispatch(openPopup('editcollection'))}>
-                    <FaPencil className={styles.icon} />
-                    EDIT COLLECTION
-                </button>
-                <button className={styles.deleteCollectionButton} onClick={handleDeleteCollection}>
-                    <FaTrashCan className={styles.icon} />
-                    DELETE COLLECTION
-                </button>
-            </div>)}
+                <div className={styles.buttonContainer}>
+                    <button
+                        className={styles.editCollectionButton}
+                        onClick={() => dispatch(openPopup('editcollection'))}
+                    >
+                        <FaPencil className={styles.icon} />
+                        EDIT COLLECTION
+                    </button>
+                    <button
+                        className={styles.deleteCollectionButton}
+                        onClick={handleDeleteCollection}
+                    >
+                        <FaTrashCan className={styles.icon} />
+                        DELETE COLLECTION
+                    </button>
+                </div>
+            )}
         </div>
     )
 }
