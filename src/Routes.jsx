@@ -26,7 +26,10 @@ const routes = [
                 path: 'mycollections',
                 element: <ProtectedRoutes element={<MyCollections />} />,
             },
-           
+            {
+                path: 'mycollections/:id',
+                element: <ProtectedRoutes element={<OneOfMyCollections />} />,
+            },
             {
                 path: 'collection/:id',
                 element: <OneOfMyCollections />,
