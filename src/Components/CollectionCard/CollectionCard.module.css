@@ -13,6 +13,17 @@ link {
     flex-direction: row;
 }
 
+.card:hover {
+    background-color: #3a3a40;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card:active,
+.card:focus {
+    background-color: #3a3a40;
+}
+
 .cardHeader {
     padding: 0 0 0.5em;
     font-weight: 400;
@@ -26,7 +37,7 @@ link {
     margin: 0.2em 1em 0.5em 0;
     padding: 0.5em;
     border-radius: var(--border-radius-xs);
-    background-color: var(--color-text-dark-gray);
+    background-color: transparent;
     display: inline-block;
 }
 
