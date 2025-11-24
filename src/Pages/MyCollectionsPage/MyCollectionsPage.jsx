@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
 import { useSearch } from '../../Components/CollectionSearch/SearchContext'
 import { useSort } from '../../Components/CollectionFilter/SortContext'
+import AddCollectionButton from '../../Components/AddCollectionButton/AddCollectionButton'
 import {
     sortCollections,
     searchCollectionsByQuery,
@@ -44,10 +45,18 @@ export default function MyCollectionsPage() {
 
     return (
         <section className={styles.wrapper}>
-            <div className={styles.inputContainer}>
+            {user && userCollections.length === 0?  (
+                <>
+                <p className={styles.resultsMessage}>
+                    You have no collections, add one!
+                </p>
+                <AddCollectionButton />
+                </>
+            ) :
+            (<div className={styles.inputContainer}>
                 <CollectionSearch />
                 <CollectionFilter />
-            </div>
+            </div>)}
             {status === 'loading' && <Loading />}
 
             {showSearchResults && searchedCollections.length === 0 && (
