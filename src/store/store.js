@@ -12,6 +12,7 @@ import editItemReducer from '../Slices/editItemSlice'
 import deleteItemReducer from '../Slices/deleteItemAPISlice'
 import addCollectionReducer from '../Slices/addCollectionAPISlice'
 import deleteCollectionReducer from '../Slices/deleteCollectionAPISlice'
+import editCollectionReducer from '../Slices/editCollectionAPISlice'
 
 export const store = configureStore({
     reducer: {
@@ -28,5 +29,6 @@ export const store = configureStore({
         editItem: editItemReducer,
         addCollection: addCollectionReducer,
         deleteCollection: deleteCollectionReducer,
+        editCollection: editCollectionReducer,
     },
 })
