@@ -28,7 +28,6 @@
     border-radius: var(--border-radius-xs);
     display: inline-block;
     justify-content: space-around;
-    background-color: transparent;
 }
 
 .cardDescription {
