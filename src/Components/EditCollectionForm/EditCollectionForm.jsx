@@ -14,7 +14,6 @@ function EditCollectionForm() {
     const id = window.location.pathname.split('/')[2]
     const [formData, setFormData] = useState({
         id: id,
-        user_id: user,
         name: '',
         description: '',
     })

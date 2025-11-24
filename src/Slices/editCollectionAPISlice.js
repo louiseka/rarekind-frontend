@@ -5,7 +5,7 @@ export const editCollection = createAsyncThunk(
     'collection/editCollection',
     async ({ formData }) => {
         const response = await makeApiRequest(`collections/${formData.id}`, {
-            method: 'PUT',
+            method: 'PATCH',
             body: JSON.stringify(formData),
         })
         console.log(formData.id)
