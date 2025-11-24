@@ -25,7 +25,7 @@ export default function UserCard({ user }) {
         <Link to={`/user/${user.id}`} className={styles.card}>
             <div>
                 <h3 className={styles.cardHeader}>{user.name}</h3>
-                <p>Number of collections: {collectionCount}</p>
+                <p className={styles.cardDetails}>Number of collections: {collectionCount}</p>
             </div>
             <div className={styles.imageContainer}>
                 {profileImageUrl && (

@@ -24,8 +24,14 @@
 .cardHeader {
     padding: 0 0 0.5em;
     font-weight: 600;
+    color: var(--color-text-light-gray);
 }
 
+.cardDetails {
+    font-size: var(--font-size-small);
+    color: var(--color-text-light-gray);
+    padding: 1em 0 0;
+}
 
 .cardImage {
     height: 100px;
