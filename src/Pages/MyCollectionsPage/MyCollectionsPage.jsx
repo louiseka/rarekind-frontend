@@ -9,6 +9,7 @@ import { fetchCollections } from '../../Slices/collectionAPISlice'
 import { useSearch } from '../../Components/CollectionSearch/SearchContext'
 import { useSort } from '../../Components/CollectionFilter/SortContext'
 import AddCollectionButton from '../../Components/AddCollectionButton/AddCollectionButton'
+import AddCollections from '../../Components/AddCollections/AddCollections.jsx'
 import {
     sortCollections,
     searchCollectionsByQuery,
@@ -47,9 +48,7 @@ export default function MyCollectionsPage() {
         <section className={styles.wrapper}>
             {user && userCollections.length === 0?  (
                 <>
-                <p className={styles.resultsMessage}>
-                    You have no collections, add one!
-                </p>
+                <AddCollections/> 
                 <AddCollectionButton />
                 </>
             ) :
