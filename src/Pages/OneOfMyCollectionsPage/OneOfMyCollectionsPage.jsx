@@ -78,7 +78,7 @@ function OneOfMyCollectionsPage() {
                 showContent={showContent}
                 handleToggle={() => setShowContent((prev) => !prev)}
             />
-            <h3 className={styles.itemHeader}>Items</h3>
+            <h3 className={styles.itemHeader}>Animals</h3>
 
             {itemsStatus === 'loading' && <Loading />}
 

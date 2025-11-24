@@ -12,7 +12,7 @@ export default function AddItemButton() {
             onClick={() => dispatch(openPopup('additem'))}
         >
             <FaPlus className={styles.addIcon} />
-            ADD ITEM
+            ADD ANIMAL
         </button>
     )
 }
