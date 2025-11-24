@@ -29,8 +29,6 @@ export default function CollectionCard({ collection }) {
             ? currentUser.name
             : 'Unknown User')
 
-    console.log('Collection user_id:', collection.user_id)
-
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <div>
