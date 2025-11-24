@@ -17,7 +17,7 @@ html.dark-mode {
     --color-text-red: #e30022; /*for errors or deletion*/
     --color-text-light-gray: #e1e2e2;
     --color-text-mid-gray: #8c8d8f;
-    --color-text-dark-gray: #555b5f; /*inactive text colour*/
+    --color-text-dark-gray: #999; /*inactive text colour*/
     --color-background-black: #1b1c22; /*The main background */
     --color-background-dark: #25262c;
     --color-background-feature: #323338;

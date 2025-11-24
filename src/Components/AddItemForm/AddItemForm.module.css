@@ -106,29 +106,3 @@ h2 {
     background: var(--color-primary);
     color: var(--color-background-black);
 }
-
-.deleteButton {
-    width: 130px;
-    background: transparent;
-    color: var(--color-text-red);
-    padding: 4px;
-    border: none;
-    border-radius: 4px;
-    font-weight: var(--font-weight-bold);
-    font-family: var(--font-family-body);
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
-
-.deleteButton:hover {
-    background: var(--color-text-red);
-    color: var(--color-background-black);
-}
-
-.deleteIcon {
-    margin: 3px;
-    font-size: 1rem;
-}
