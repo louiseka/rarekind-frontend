@@ -31,12 +31,6 @@ export default function CollectionCard({ collection }) {
 
     console.log('Collection user_id:', collection.user_id)
 
-    useEffect(() => {
-        if (usersStatus === 'idle') {
-            dispatch(fetchUsers())
-        }
-    }, [dispatch, usersStatus])
-
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <div>
