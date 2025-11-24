@@ -12,15 +12,16 @@ function EditCollectionForm() {
     const [errorMessage, setErrorMessage] = useState('')
     const user = useSelector((state) => state.auth.user)?.id
     const id = window.location.pathname.split('/')[2]
+    const collections = useSelector((state) => state.collections.items)
+    const collectionToEdit = collections.find(
+        (collection) => collection.id === parseInt(id)
+    )
     const [formData, setFormData] = useState({
         id: id,
         name: '',
         description: '',
     })
-    console.log('Editing collection with data:', formData)
-    console.log(formData.id)
-    console.log('Collection ID:', id)
-    console.log('User ID:', user)
+   
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -56,7 +57,7 @@ function EditCollectionForm() {
                     <input
                         type="text"
                         name="name"
-                        placeholder="Enter collection title..."
+                        placeholder={collectionToEdit?.name || "Enter title..."}
                         className={styles.title}
                         required
                         onChange={handleChange}
@@ -68,7 +69,7 @@ function EditCollectionForm() {
                     <textarea
                         type="text"
                         name="description"
-                        placeholder="Enter description..."
+                        placeholder={collectionToEdit?.description || "Enter description..."}
                         className={styles.description}
                         required
                         value={formData.description}
