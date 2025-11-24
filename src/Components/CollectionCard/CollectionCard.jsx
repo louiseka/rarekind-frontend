@@ -16,7 +16,11 @@ export default function CollectionCard({ collection }) {
     }
 
     const coverImage = getRandomImage()
-
+    
+     const prefix = location.pathname.startsWith('/mycollections')
+        ? 'mycollections'
+        : 'collection'
+     
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <div className={styles.cardContainer}>
@@ -60,6 +64,9 @@ export default function CollectionCard({ collection }) {
                     </p>
                 </div>
             </div>
+ 
+            )}
+
         </Link>
     )
 }

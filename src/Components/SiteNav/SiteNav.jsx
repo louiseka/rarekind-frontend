@@ -11,12 +11,14 @@ function SiteNav() {
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
 
     const isAllCollections =
-        location.pathname === '/' || location.pathname === '/allcollections'
+        location.pathname === '/' || location.pathname.startsWith('/collection')
 
     const navLinks = [
         { label: 'All collections', url: '/' },
-        ...(isLoggedIn ? [{ label: 'My collections', url: '/mycollections'}] : []),
-        ...(isLoggedIn ? [{ label: 'Users', url: '/users' }] : []) ,
+        ...(isLoggedIn
+            ? [{ label: 'My collections', url: '/mycollections' }]
+            : []),
+        ...(isLoggedIn ? [{ label: 'Users', url: '/users' }] : []),
     ]
 
     return (
@@ -26,12 +28,12 @@ function SiteNav() {
                     <NavLink
                         key={navLink.url}
                         to={navLink.url}
-                        className={({ isActive }) =>
+                        className={
                             navLink.url === '/'
                                 ? isAllCollections
                                     ? styles.activeLink
                                     : styles.inactiveLink
-                                : isActive
+                                : location.pathname.startsWith(navLink.url)
                                 ? styles.activeLink
                                 : styles.inactiveLink
                         }
@@ -39,7 +41,7 @@ function SiteNav() {
                         {navLink.label}
                     </NavLink>
                 ))}
-                {collectionName && (
+                {/* {collectionName && (
                     <NavLink
                         to={location.pathname}
                         key={location.pathname}
@@ -49,7 +51,7 @@ function SiteNav() {
                     >
                         {collectionName}
                     </NavLink>
-                )}
+                )} */}
             </nav>
             {(location.pathname === '/allcollections' ||
                 location.pathname === '/mycollections') && (

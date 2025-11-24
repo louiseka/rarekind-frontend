@@ -1,0 +1,35 @@
+.breadcrumbs {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    list-style: none;
+    gap: 15px;
+    align-items: center;
+    margin: 0;
+    padding: 0 0 0 1.5em;
+}
+
+.breadcrumbLink {
+    cursor: pointer;
+}
+
+.activeLink {
+    color: var(--color-text-light-gray);
+    display: flex;
+    align-items: center;
+}
+
+.inactiveLink {
+    color: var(--color-text-dark-gray);
+}
+
+.icon {
+    padding: 0 0.2em;
+}
+
+@media (min-width: 768px) {
+    .breadcrumbs {
+        margin: 1em 1.8em 0;
+        padding: 0 0 0 2.4em;
+    }
+}
