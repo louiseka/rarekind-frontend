@@ -29,8 +29,14 @@ export default function CollectionCard({ collection }) {
             ? currentUser.name
             : 'Unknown User')
 
+    const coverImage = getRandomImage()
+
+    const prefix = location.pathname.startsWith('/mycollections')
+        ? 'mycollections'
+        : 'collection'
+
     return (
-        <Link to={`/collection/${collection.id}`} className={styles.card}>
+        <Link to={`/${prefix}/${collection.id}`} className={styles.card}>
             <div>
                 <h3 className={styles.cardHeader}>{collection.name}</h3>
                 {tags &&
