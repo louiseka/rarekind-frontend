@@ -18,6 +18,16 @@ export default function EditItemForm() {
             <h2>Edit your Animal</h2>
             <form className={styles.form}>
                 <label className={styles.label}>
+                    Name
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter animal name..."
+                        required
+                        className={styles.name}
+                    />
+                </label>
+                <label className={styles.label}>
                     Description
                     <textarea
                         type="text"
@@ -27,20 +37,30 @@ export default function EditItemForm() {
                     />
                 </label>
                 <label className={styles.label}>
-                    Additional notes
-                    <textarea
+                    Image
+                    <input
                         type="text"
-                        name="notes"
-                        placeholder="Enter additional notes..."
-                        className={styles.notes}
+                        placeholder="Enter image URL..."
+                        name="image_url"
+                        className={styles.image}
                     />
                 </label>
+                <select
+                    className={styles.select}
+                    name="classification_id"
+                    aria-label="select classification"
+                    required
+                >
+                    <option value="">Select Classification</option>
+                    <option value="3">Mammal</option>
+                    <option value="2">Bird</option>
+                    <option value="1">Reptile</option>
+                    <option value="5">Amphibian</option>
+                    <option value="4">Fish</option>
+                </select>
+
                 <button type="submit" className={styles.button}>
-                    UPDATE ITEM
-                </button>
-                <button type="submit" className={styles.deleteButton}>
-                    <FaTrashCan className={styles.deleteIcon} />
-                    DELETE ITEM
+                    UPDATE ANIMAL
                 </button>
             </form>
         </div>
