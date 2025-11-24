@@ -1,9 +1,11 @@
 import styles from './CollectionDetails.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { getTagColorClass } from '../../utils/collections'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import { deleteCollection } from '../../Slices/deleteCollectionAPISlice'
 
 export default function CollectionDetails({ collectionToShow }) {
+    const dispatch = useDispatch()
     const tags = Array.from(
         new Set(
             collectionToShow.animals.map((animal) => animal.classification_name)
@@ -12,6 +14,15 @@ export default function CollectionDetails({ collectionToShow }) {
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
     const user = useSelector((state) => state.auth.user)?.id
+
+    const handleDeleteCollection = async () => {
+            try {
+                await dispatch(deleteCollection({ collectionId: collectionToShow.id })).unwrap()
+                window.location.href = '/mycollections'
+            } catch (error) {
+                console.error(error)
+            }
+        }
 
     return (
         <div className={styles.collectionContainer}>
@@ -70,7 +81,7 @@ export default function CollectionDetails({ collectionToShow }) {
                     <FaPencil className={styles.icon} />
                     EDIT COLLECTION
                 </button>
-                <button className={styles.deleteCollectionButton}>
+                <button className={styles.deleteCollectionButton} onClick={handleDeleteCollection}>
                     <FaTrashCan className={styles.icon} />
                     DELETE COLLECTION
                 </button>
