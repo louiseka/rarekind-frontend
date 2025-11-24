@@ -1,13 +1,10 @@
 import styles from './CollectionCard.module.css'
 import { Link } from 'react-router-dom'
 import { getTagColorClass } from '../../utils/collections'
-import { useSelector, useDispatch } from 'react-redux'
-import { fetchUsers } from '../../Slices/usersAPISlice'
-import { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+
 
 export default function CollectionCard({ collection }) {
-    const dispatch = useDispatch()
-    const usersStatus = useSelector((state) => state.users.status)
     const tags = Array.from(
         new Set(collection.animals.map((animal) => animal.classification_name))
     )
