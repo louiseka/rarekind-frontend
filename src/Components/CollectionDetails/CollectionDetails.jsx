@@ -3,6 +3,7 @@ import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { getTagColorClass } from '../../utils/collections'
 import { useSelector, useDispatch } from 'react-redux'
 import { deleteCollection } from '../../Slices/deleteCollectionAPISlice'
+import { openPopup } from '../../Slices/popupSlice'
 
 export default function CollectionDetails({ collectionToShow }) {
     const dispatch = useDispatch()
@@ -14,6 +15,7 @@ export default function CollectionDetails({ collectionToShow }) {
     const imageUrls = collectionToShow.animals.map((animal) => animal.image_url)
     const validImages = imageUrls.filter(Boolean)
     const user = useSelector((state) => state.auth.user)?.id
+    const dispatch = useDispatch()
 
     const handleDeleteCollection = async () => {
             try {
@@ -77,7 +79,7 @@ export default function CollectionDetails({ collectionToShow }) {
             </div>
             {user && user === collectionToShow.user_id && (
             <div className={styles.buttonContainer}>
-                <button className={styles.editCollectionButton}>
+                <button className={styles.editCollectionButton} onClick={() => dispatch(openPopup('editcollection'))}>
                     <FaPencil className={styles.icon} />
                     EDIT COLLECTION
                 </button>
