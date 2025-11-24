@@ -20,7 +20,7 @@ export default function CollectionCard({ collection }) {
         const randomIndex = Math.floor(Math.random() * animalsWithImages.length)
         return animalsWithImages[randomIndex].image_url
     }
-    const coverImage = getRandomImage()
+
     const currentUser = useSelector((state) => state.auth.user)
     const collectionOwner = users.find((u) => u.id === collection.user_id)
     const collectionOwnerName =
