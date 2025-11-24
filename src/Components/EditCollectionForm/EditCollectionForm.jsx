@@ -1,7 +1,7 @@
 import styles from './EditCollectionForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { editCollection } from '../../Slices/editCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
 
@@ -10,7 +10,6 @@ function EditCollectionForm() {
     const dispatch = useDispatch()
     const status = useSelector((state) => state.editCollection.status)
     const [errorMessage, setErrorMessage] = useState('')
-    const user = useSelector((state) => state.auth.user)?.id
     const id = window.location.pathname.split('/')[2]
     const collections = useSelector((state) => state.collections.items)
     const collectionToEdit = collections.find(
@@ -21,6 +20,16 @@ function EditCollectionForm() {
         name: '',
         description: '',
     })
+
+    useEffect(() => {
+        if (collectionToEdit) {
+            setFormData({
+                id: collectionToEdit.id,
+                name: collectionToEdit.name,
+                description: collectionToEdit.description,
+            })
+        }
+    }, [collectionToEdit])
    
 
     const handleChange = (e) => {
@@ -57,7 +66,7 @@ function EditCollectionForm() {
                     <input
                         type="text"
                         name="name"
-                        placeholder={collectionToEdit?.name || "Enter title..."}
+                        placeholder="Enter title..."
                         className={styles.title}
                         required
                         onChange={handleChange}
@@ -69,7 +78,7 @@ function EditCollectionForm() {
                     <textarea
                         type="text"
                         name="description"
-                        placeholder={collectionToEdit?.description || "Enter description..."}
+                        placeholder="Enter description..."
                         className={styles.description}
                         required
                         value={formData.description}
