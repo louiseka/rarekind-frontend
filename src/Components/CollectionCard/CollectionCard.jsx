@@ -1,49 +1,84 @@
 import styles from './CollectionCard.module.css'
 import { Link } from 'react-router-dom'
 import { getTagColorClass } from '../../utils/collections'
+import { useSelector, useDispatch } from 'react-redux'
+import { fetchUsers } from '../../Slices/usersAPISlice'
+import { useEffect } from 'react'
 
 export default function CollectionCard({ collection }) {
+    const dispatch = useDispatch()
+    const usersStatus = useSelector((state) => state.users.status)
     const tags = Array.from(
         new Set(collection.animals.map((animal) => animal.classification_name))
     )
+    const users = useSelector((state) => state.users.items)
     const getRandomImage = () => {
-        const animalsWithImages = collection.animals.filter(animal => animal.image_url)
+        const animalsWithImages = collection.animals.filter(
+            (animal) => animal.image_url
+        )
         if (animalsWithImages.length === 0) return null
         const randomIndex = Math.floor(Math.random() * animalsWithImages.length)
         return animalsWithImages[randomIndex].image_url
     }
-    
     const coverImage = getRandomImage()
-    
+    const currentUser = useSelector((state) => state.auth.user)
+    const collectionOwner = users.find((u) => u.id === collection.user_id)
+    const collectionOwnerName =
+        collectionOwner?.name ||
+        (currentUser?.id === collection.user_id
+            ? currentUser.name
+            : 'Unknown User')
+
+    console.log('Collection user_id:', collection.user_id)
+
+    useEffect(() => {
+        if (usersStatus === 'idle') {
+            dispatch(fetchUsers())
+        }
+    }, [dispatch, usersStatus])
+
     return (
         <Link to={`/collection/${collection.id}`} className={styles.card}>
             <div>
-            <h3 className={styles.cardHeader}>{collection.name}</h3>
-            {tags && 
-                tags.map((tag) => (
-                    <p
-                        key={tag}
-                        className={`${styles.cardTag} ${getTagColorClass(
-                            tag
-                        )} `}
-                    >
-                        {tag}
-                    </p>
-                ))}
+                <h3 className={styles.cardHeader}>{collection.name}</h3>
+                {tags &&
+                    tags.map((tag) => (
+                        <p
+                            key={tag}
+                            className={`${styles.cardTag} ${getTagColorClass(
+                                tag
+                            )} `}
+                        >
+                            {tag}
+                        </p>
+                    ))}
 
-            <p className={styles.cardDetails}>
-                <span className={styles.cardStatusTitle}>Created:</span>{' '}
-                <time dateTime="14:00">
-                    {new Date(collection.created_at).toLocaleString()}
-                </time>
-            </p>
-            <p className={styles.cardDetails}>
-                <span className={styles.cardStatusTitle}>Last updated:</span>{' '}
-                <time> {new Date(collection.updated_at).toLocaleString()}</time>
-            </p>
+                <p className={styles.cardDetails}>
+                    <span className={styles.cardStatusTitle}>Created:</span>{' '}
+                    <time dateTime="14:00">
+                        {new Date(collection.created_at).toLocaleString()}
+                    </time>
+                </p>
+                <p className={styles.cardDetails}>
+                    <span className={styles.cardStatusTitle}>
+                        Last updated:
+                    </span>{' '}
+                    <time>
+                        {' '}
+                        {new Date(collection.updated_at).toLocaleString()}
+                    </time>
+                </p>
+                <p className={styles.cardDetails}>
+                    <span className={styles.cardStatusTitle}>Created by:</span>{' '}
+                    {collectionOwnerName}
+                </p>
             </div>
             {coverImage && (
-                <img src={coverImage} alt={collection.name} className={styles.coverImage} />
+                <img
+                    src={coverImage}
+                    alt={collection.name}
+                    className={styles.coverImage}
+                />
             )}
         </Link>
     )
