@@ -8,9 +8,9 @@ export default function CollectionCard({ collection }) {
     )
     const getRandomImage = () => {
         const animalsWithImages = collection.animals.filter(animal => animal.image_url)
-        const randomIndex = Math.floor(Math.random() * collection.animals.length)
         if (animalsWithImages.length === 0) return null
-        return collection.animals[randomIndex].image_url
+        const randomIndex = Math.floor(Math.random() * animalsWithImages.length)
+        return animalsWithImages[randomIndex].image_url
     }
     
     const coverImage = getRandomImage()
@@ -42,7 +42,9 @@ export default function CollectionCard({ collection }) {
                 <time> {new Date(collection.updated_at).toLocaleString()}</time>
             </p>
             </div>
-            <img src={coverImage} alt={collection.name} className={styles.coverImage} />
+            {coverImage && (
+                <img src={coverImage} alt={collection.name} className={styles.coverImage} />
+            )}
         </Link>
     )
 }
