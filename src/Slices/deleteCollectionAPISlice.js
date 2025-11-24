@@ -1,22 +1,21 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 import makeApiRequest from '../services/apiService'
 
-export const addCollection = createAsyncThunk(
-    'collection/addCollection',
-    async ({ formData }) => {
+export const deleteCollection = createAsyncThunk(
+    'collection/deleteCollection',
+    async ({ collectionId }) => {
         const response = await makeApiRequest(
-            `collections`,
+            `collections/${collectionId}`,
             {
-                method: 'POST',
-                body: JSON.stringify(formData),
+                method: 'DELETE',
             }
         )
         return response
     }
 )
 
-const addCollectionSlice = createSlice({
-    name: 'addCollection',
+const deleteCollectionSlice = createSlice({
+    name: 'deleteCollection',
     initialState: {
         items: [],
         status: 'idle',
@@ -25,18 +24,17 @@ const addCollectionSlice = createSlice({
     reducers: {},
     extraReducers: (builder) => {
         builder
-            .addCase(addCollection.pending, (state) => {
+            .addCase(deleteCollection.pending, (state) => {
                 state.status = 'loading'
             })
-            .addCase(addCollection.fulfilled, (state, action) => {
+            .addCase(deleteCollection.fulfilled, (state) => {
                 state.status = 'succeeded'
-                state.items = action.payload
             })
-            .addCase(addCollection.rejected, (state, action) => {
+            .addCase(deleteCollection.rejected, (state, action) => {
                 state.status = 'failed'
                 state.error = action.payload
             })
     },
 })
 
-export default addCollectionSlice.reducer
+export default deleteCollectionSlice.reducer
