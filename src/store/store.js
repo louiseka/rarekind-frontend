@@ -10,7 +10,8 @@ import classificationReducer from '../Slices/classificationAPISlice'
 import addItemReducer from '../Slices/addItemAPISlice'
 import editItemReducer from '../Slices/editItemSlice'
 import deleteItemReducer from '../Slices/deleteItemAPISlice'
-import addCollectionReducer  from '../Slices/addCollectionAPISlice'
+import addCollectionReducer from '../Slices/addCollectionAPISlice'
+import deleteCollectionReducer from '../Slices/deleteCollectionAPISlice'
 import editCollectionReducer from '../Slices/editCollectionAPISlice'
 
 export const store = configureStore({
@@ -27,6 +28,7 @@ export const store = configureStore({
         deleteItem: deleteItemReducer,
         editItem: editItemReducer,
         addCollection: addCollectionReducer,
+        deleteCollection: deleteCollectionReducer,
         editCollection: editCollectionReducer,
     },
 })
