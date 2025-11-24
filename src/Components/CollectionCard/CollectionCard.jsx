@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { getTagColorClass } from '../../utils/collections'
 import { useSelector } from 'react-redux'
 
-
 export default function CollectionCard({ collection }) {
     const tags = Array.from(
         new Set(collection.animals.map((animal) => animal.classification_name))
@@ -58,25 +57,28 @@ export default function CollectionCard({ collection }) {
                             </p>
                         ))}
 
-                <p className={styles.cardDetails}>
-                    <span className={styles.cardStatusTitle}>Created:</span>{' '}
-                    <time dateTime="14:00">
-                        {new Date(collection.created_at).toLocaleString()}
-                    </time>
-                </p>
-                <p className={styles.cardDetails}>
-                    <span className={styles.cardStatusTitle}>
-                        Last updated:
-                    </span>{' '}
-                    <time>
-                        {' '}
-                        {new Date(collection.updated_at).toLocaleString()}
-                    </time>
-                </p>
-                <p className={styles.cardDetails}>
-                    <span className={styles.cardStatusTitle}>Created by:</span>{' '}
-                    {collectionOwnerName}
-                </p>
+                    <p className={styles.cardDetails}>
+                        <span className={styles.cardStatusTitle}>Created:</span>{' '}
+                        <time dateTime="14:00">
+                            {new Date(collection.created_at).toLocaleString()}
+                        </time>
+                    </p>
+                    <p className={styles.cardDetails}>
+                        <span className={styles.cardStatusTitle}>
+                            Last updated:
+                        </span>{' '}
+                        <time>
+                            {' '}
+                            {new Date(collection.updated_at).toLocaleString()}
+                        </time>
+                    </p>
+                    <p className={styles.cardDetails}>
+                        <span className={styles.cardStatusTitle}>
+                            Created by:
+                        </span>{' '}
+                        {collectionOwnerName}
+                    </p>
+                </div>
             </div>
         </Link>
     )
