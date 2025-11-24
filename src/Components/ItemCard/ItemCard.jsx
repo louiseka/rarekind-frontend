@@ -2,15 +2,14 @@ import styles from './ItemCard.module.css'
 import { FaPencil, FaTrashCan } from 'react-icons/fa6'
 import { useDispatch, useSelector } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
+import { setItemToEdit, setCollectionId } from '../../Slices/editItemSlice'
 import { deleteItem } from '../../Slices/deleteItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
 import { getTagColorClass } from '../../utils/collections'
 
-
 export default function ItemCard({ item, collectionId, collectionUserId }) {
     const dispatch = useDispatch()
     const user = useSelector((state) => state.auth.user)?.id
-   
 
     const deleteAnimal = async () => {
         try {
@@ -49,7 +48,11 @@ export default function ItemCard({ item, collectionId, collectionUserId }) {
                 <div className={styles.buttonContainer}>
                     <button
                         className={styles.editButton}
-                        onClick={() => dispatch(openPopup('edititem'))}
+                        onClick={() => {
+                            dispatch(openPopup('edititem'))
+                            dispatch(setItemToEdit(item))
+                            dispatch(setCollectionId(collectionId))
+                        }}
                         aria-label={`Edit the animal ${item.name}`}
                     >
                         <FaPencil />

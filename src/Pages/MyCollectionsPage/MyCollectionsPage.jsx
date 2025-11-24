@@ -20,10 +20,15 @@ export default function MyCollectionsPage() {
     const error = useSelector((state) => state.collections.error)
     const { query } = useSearch()
     const { sortOrder } = useSort()
+    const user = useSelector((state) => state.auth.user)?.id
+
+    // Filter to only logged in users collections
+
+    const userCollections = collections.filter((c) => c.user_id === user)
 
     // Search Input functionality
 
-    const searchedCollections = searchCollectionsByQuery(collections, query)
+    const searchedCollections = searchCollectionsByQuery(userCollections, query)
     const showSearchResults = query.trim().length > 0
 
     const baseList = searchedCollections

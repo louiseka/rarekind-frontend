@@ -1,10 +1,9 @@
 import styles from './NewCollectionForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { use, useState } from 'react'
+import { useState } from 'react'
 import { addCollection } from '../../Slices/addCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
-
 
 function NewCollectionForm() {
     const dispatch = useDispatch()
@@ -15,10 +14,7 @@ function NewCollectionForm() {
         user_id: user,
         name: '',
         description: '',
-        image_url: '',
-        classifications: '',
     })
-
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -28,10 +24,13 @@ function NewCollectionForm() {
         e.preventDefault()
         setErrorMessage('')
         try {
-            await dispatch(addCollection({ formData })).unwrap()
+            const newCollection = await dispatch(
+                addCollection({ formData })
+            ).unwrap()
             console.log('Collection added successfully')
             await dispatch(fetchCollections()).unwrap()
             dispatch(closePopup())
+            window.location.href = `/collection/${newCollection.id}`
         } catch (error) {
             console.error('Error adding collection:', error)
             setErrorMessage(error.message || 'Failed to create collection')
@@ -72,35 +71,6 @@ function NewCollectionForm() {
                         value={formData.description}
                         onChange={handleChange}
                     />
-                </label>
-                <label className={styles.label}>
-                    Image
-                    <input
-                        type="text"
-                        placeholder="Enter image URL..."
-                        name="image_url"
-                        className={styles.image}
-                        onChange={handleChange}
-                        value={formData.image_url}
-                    />
-                </label>
-                <label className={styles.label}>
-                    Classification
-                    <select
-                        className={styles.select}
-                        name="classifications"
-                        aria-label="select classifications"
-                        required
-                        onChange={handleChange}
-                        value={formData.classifications}
-                    >
-                        <option value="">Select Classification</option>
-                        <option value="3">Mammal</option>
-                        <option value="2">Bird</option>
-                        <option value="1">Reptile</option>
-                        <option value="5">Amphibian</option>
-                        <option value="4">Fish</option>
-                    </select>
                 </label>
                 <button type="submit" className={styles.button}>
                     {status === 'loading' ? 'CREATING...' : 'CREATE COLLECTION'}
