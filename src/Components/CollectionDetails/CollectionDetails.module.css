@@ -85,7 +85,7 @@
 }
 
 .summaryImage {
-    height: 200px;
+    width: 300px;
     border-radius: var(--border-radius-m);
     object-fit: cover;
 }
@@ -142,5 +142,8 @@
     }
     .imageContainer {
         flex-direction: row;
+    }
+    .summaryImage {
+        height: 200px;
     }
 }

@@ -33,20 +33,30 @@ export default function CollectionCard({ collection }) {
         : 'collection'
 
     return (
-        <Link to={`/${prefix}/${collection.id}`} className={styles.card}>
-            <div>
-                <h3 className={styles.cardHeader}>{collection.name}</h3>
-                {tags &&
-                    tags.map((tag) => (
-                        <p
-                            key={tag}
-                            className={`${styles.cardTag} ${getTagColorClass(
-                                tag
-                            )} `}
-                        >
-                            {tag}
-                        </p>
-                    ))}
+        <Link to={`/collection/${collection.id}`} className={styles.card}>
+            <div className={styles.cardContainer}>
+                {coverImage && (
+                    <div className={styles.cardImage}>
+                        <img
+                            src={coverImage}
+                            alt={collection.name}
+                            className={styles.coverImage}
+                        />
+                    </div>
+                )}
+                <div className={styles.cardText}>
+                    <h3 className={styles.cardHeader}>{collection.name}</h3>
+                    {tags &&
+                        tags.map((tag) => (
+                            <p
+                                key={tag}
+                                className={`${
+                                    styles.cardTag
+                                } ${getTagColorClass(tag)} `}
+                            >
+                                {tag}
+                            </p>
+                        ))}
 
                 <p className={styles.cardDetails}>
                     <span className={styles.cardStatusTitle}>Created:</span>{' '}
@@ -68,13 +78,6 @@ export default function CollectionCard({ collection }) {
                     {collectionOwnerName}
                 </p>
             </div>
-            {coverImage && (
-                <img
-                    src={coverImage}
-                    alt={collection.name}
-                    className={styles.coverImage}
-                />
-            )}
         </Link>
     )
 }
