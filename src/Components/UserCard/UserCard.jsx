@@ -1,5 +1,6 @@
 import styles from './UserCard.module.css'
 import { useSelector } from 'react-redux'
+import { Link } from 'react-router'
 
 export default function UserCard({ user }) {
     const collections = useSelector((state) => state.collections.items)
@@ -21,12 +22,12 @@ export default function UserCard({ user }) {
     }
 
     return (
-        <div className={styles.card}>
+        <Link to={`/user/${user.id}`} className={styles.card}>
             <div>
-                <h3>{user.name}</h3>
-                <p>Number of collections:{' '} {collectionCount}</p>
+                <h3 className={styles.cardHeader}>{user.name}</h3>
+                <p>Number of collections: {collectionCount}</p>
             </div>
-            <div>
+            <div className={styles.imageContainer}>
                 {profileImageUrl && (
                     <img
                         src={profileImageUrl}
@@ -35,6 +36,6 @@ export default function UserCard({ user }) {
                     />
                 )}
             </div>
-        </div>
+        </Link>
     )
 }

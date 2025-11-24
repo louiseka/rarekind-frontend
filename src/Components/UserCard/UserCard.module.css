@@ -1,3 +1,7 @@
+
+
+
+
 .card {
     border: 2px solid var(--color-background-feature);
     border-radius: var(--border-radius-s);
@@ -22,12 +26,6 @@
     font-weight: 600;
 }
 
-
-.cardDescription {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-height: 120px;
-}
 
 .cardImage {
     height: 100px;
