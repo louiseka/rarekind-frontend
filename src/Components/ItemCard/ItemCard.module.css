@@ -33,8 +33,7 @@
 .cardDescription {
     overflow: hidden;
     text-overflow: ellipsis;
-
-    max-width: 320px;
+    max-width: 400px;
 }
 
 .cardImage {
