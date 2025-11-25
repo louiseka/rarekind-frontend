@@ -11,7 +11,7 @@ export default function AddItemButton() {
             className={styles.addItemButton}
             onClick={() => dispatch(openPopup('additem'))}
         >
-            <FaPlus className={styles.addIcon} />
+            <FaPlus />
             ADD ANIMAL
         </button>
     )

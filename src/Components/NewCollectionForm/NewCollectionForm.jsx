@@ -4,6 +4,7 @@ import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
 import { addCollection } from '../../Slices/addCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
+import { FaX } from 'react-icons/fa6'
 
 function NewCollectionForm() {
     const dispatch = useDispatch()
@@ -27,7 +28,6 @@ function NewCollectionForm() {
             const newCollection = await dispatch(
                 addCollection({ formData })
             ).unwrap()
-            console.log('Collection added successfully')
             await dispatch(fetchCollections()).unwrap()
             dispatch(closePopup())
             window.location.href = `/collection/${newCollection.id}`
@@ -44,12 +44,13 @@ function NewCollectionForm() {
                 className={styles.close}
                 aria-label="Close New Collection Form"
             >
-                X
+                <FaX />
             </button>
             <h2>New Collection</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
                     Title
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="name"
@@ -62,6 +63,7 @@ function NewCollectionForm() {
                 </label>
                 <label className={styles.label}>
                     Description
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <textarea
                         type="text"
                         name="description"

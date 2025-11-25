@@ -7,16 +7,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border-radius: 4px;
-    padding: 20px 40px 40px 40px; 
+    border-radius: var(--border-radius-s);
+    padding: 20px;
 }
 
 .close {
-    margin-left: 100%;
+    margin-left: 95%;
     top: 10px;
     right: 10px;
-    font-size: 2rem;
-    text-decoration: none;
+    font-size: 1.8rem;
     color: var(--color-text-light-gray);
     background: none;
     border: none;
@@ -29,6 +28,12 @@
 
 h2 {
     margin: 5px;
+}
+
+.requiredLabel {
+    font-size: var(--font-size-small);
+    color: var(--color-text-dark-gray);
+    padding: 0 0.4em;
 }
 
 .form {
@@ -88,7 +93,6 @@ h2 {
     width: 100%;
 }
 
-
 .button {
     background: var(--color-text-mid-gray);
     color: var(--color-text-light-gray);
@@ -97,6 +101,7 @@ h2 {
     border-radius: 4px;
     font-weight: var(--font-weight-bold);
     font-family: var(--font-family-body);
+    font-size: var(--font-size-body);
     margin-bottom: 20px;
     cursor: pointer;
 }
