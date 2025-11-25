@@ -1,9 +1,10 @@
 import styles from './CollectionCard.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getTagColorClass } from '../../utils/collections'
 import { useSelector } from 'react-redux'
 
 export default function CollectionCard({ collection }) {
+    const { id } = useParams()
     const tags = Array.from(
         new Set(collection.animals.map((animal) => animal.classification_name))
     )
@@ -27,12 +28,14 @@ export default function CollectionCard({ collection }) {
 
     const coverImage = getRandomImage()
 
-    const prefix = location.pathname.startsWith('/mycollections')
-        ? 'mycollections'
-        : 'collection'
+    const collectionLink = location.pathname.startsWith('/mycollections')
+        ? `/mycollections/${collection.id}`
+        : location.pathname.startsWith('/user')
+        ? `/user/${id}/collection/${collection.id}`
+        : `/collection/${collection.id}`
 
     return (
-        <Link to={`/collection/${collection.id}`} className={styles.card}>
+        <Link to={collectionLink} className={styles.card}>
             <div className={styles.cardContainer}>
                 {coverImage && (
                     <div className={styles.cardImage}>
