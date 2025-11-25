@@ -1,7 +1,7 @@
 import styles from './AddItemForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
-import { FaTrashCan } from 'react-icons/fa6'
+import { FaX } from 'react-icons/fa6'
 import { useState } from 'react'
 import { addItem } from '../../Slices/addItemAPISlice'
 import { fetchItemsByCollectionId } from '../../Slices/itemAPISlice'
@@ -40,12 +40,13 @@ function AddItemForm() {
                 className={styles.close}
                 aria-label="Close add item"
             >
-                X
+                <FaX />
             </button>
             <h2>Add Animal</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
-                    Name
+                    Name{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <textarea
                         type="text"
                         name="name"
@@ -57,7 +58,8 @@ function AddItemForm() {
                     />
                 </label>
                 <label className={styles.label}>
-                    Description
+                    Description{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <textarea
                         type="text"
                         name="description"
@@ -79,21 +81,25 @@ function AddItemForm() {
                         value={formData.image_url}
                     />
                 </label>
-                <select 
-                    className={styles.select}
-                    name="classification_id"
-                    aria-label="select classification"
-                    required
-                    onChange={handleChange}
-                    value={formData.classification_id}
-                >
-                    <option value="">Select Classification</option>
-                    <option value="3">Mammal</option>
-                    <option value="2">Bird</option>
-                    <option value="1">Reptile</option>
-                    <option value="5">Amphibian</option>
-                    <option value="4">Fish</option>
-                </select>
+                <label htmlFor="classification_id" className={styles.label}>
+                    Classification{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
+                    <select
+                        className={styles.select}
+                        name="classification_id"
+                        aria-label="select classification"
+                        required
+                        onChange={handleChange}
+                        value={formData.classification_id}
+                    >
+                        <option value="">Select Classification</option>
+                        <option value="3">Mammal</option>
+                        <option value="2">Bird</option>
+                        <option value="1">Reptile</option>
+                        <option value="5">Amphibian</option>
+                        <option value="4">Fish</option>
+                    </select>
+                </label>
                 <button type="submit" className={styles.button}>
                     {status === 'loading' ? 'ADDING...' : 'ADD ANIMAL'}
                 </button>

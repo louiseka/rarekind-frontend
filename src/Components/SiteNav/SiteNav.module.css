@@ -48,6 +48,7 @@
     border: none;
     border-radius: var(--border-radius-s);
     font-family: var(--font-family-body);
+    font-size: var(--font-size-body);
     font-weight: var(--font-weight-bold);
     color: var(--color-background-black);
     cursor: pointer;

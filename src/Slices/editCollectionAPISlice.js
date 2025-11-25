@@ -8,7 +8,6 @@ export const editCollection = createAsyncThunk(
             method: 'PATCH',
             body: JSON.stringify(formData),
         })
-        console.log(formData.id)
         return response
     }
 )

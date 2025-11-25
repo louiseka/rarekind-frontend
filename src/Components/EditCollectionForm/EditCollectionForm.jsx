@@ -4,7 +4,7 @@ import { closePopup } from '../../Slices/popupSlice'
 import { useState, useEffect } from 'react'
 import { editCollection } from '../../Slices/editCollectionAPISlice'
 import { fetchCollections } from '../../Slices/collectionAPISlice'
-
+import { FaX } from 'react-icons/fa6'
 
 function EditCollectionForm() {
     const dispatch = useDispatch()
@@ -30,7 +30,6 @@ function EditCollectionForm() {
             })
         }
     }, [collectionToEdit])
-   
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -41,7 +40,6 @@ function EditCollectionForm() {
         setErrorMessage('')
         try {
             await dispatch(editCollection({ formData })).unwrap()
-            console.log('Collection edited successfully')
             await dispatch(fetchCollections()).unwrap()
             dispatch(closePopup())
         } catch (error) {
@@ -55,14 +53,15 @@ function EditCollectionForm() {
             <button
                 onClick={() => dispatch(closePopup())}
                 className={styles.close}
-                aria-label="Close New Collection Form"
+                aria-label="Close Edit Collection Form"
             >
-                X
+                <FaX />
             </button>
             <h2>Edit Collection</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
-                    Title
+                    Title{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="name"
@@ -74,7 +73,8 @@ function EditCollectionForm() {
                     />
                 </label>
                 <label className={styles.label}>
-                    Description
+                    Description{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <textarea
                         type="text"
                         name="description"

@@ -4,6 +4,7 @@ import { closePopup } from '../../Slices/popupSlice'
 import { useState } from 'react'
 import authService from '../../services/authService'
 import { login } from '../../Slices/authSlice'
+import { FaX } from 'react-icons/fa6'
 
 function SignupForm() {
     const dispatch = useDispatch()
@@ -28,21 +29,17 @@ function SignupForm() {
                 formData.email,
                 formData.password
             )
-            console.log('Registration successful, logging in...')
             await dispatch(
                 login({
                     email: formData.email,
                     password: formData.password,
                 })
             ).unwrap()
-
-            console.log('Login successful')
             dispatch(closePopup())
         } catch (error) {
             console.error('Signup/login error:', error)
         }
     }
-    console.log(status)
 
     return (
         <div className={styles.wrapper}>
@@ -51,12 +48,13 @@ function SignupForm() {
                 className={styles.close}
                 aria-label="Close Login"
             >
-                X
+                <FaX />
             </button>
             <h2>Sign up</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
                     Username
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="name"
@@ -69,6 +67,7 @@ function SignupForm() {
                 </label>
                 <label className={styles.label}>
                     Email
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="email"
@@ -81,6 +80,7 @@ function SignupForm() {
                 </label>
                 <label className={styles.label}>
                     Password
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="password"
                         name="password"
