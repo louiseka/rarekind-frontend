@@ -14,7 +14,6 @@ export function sortCollections(collections, sortOrder) {
 }
 
 export function searchCollectionsByQuery(collections, query) {
-    console.log(collections, query)
     if (!query.trim()) return collections
     return collections.filter((collection) =>
         collection.name?.toLowerCase().includes(query.toLowerCase())

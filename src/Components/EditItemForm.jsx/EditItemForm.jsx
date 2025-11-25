@@ -8,6 +8,7 @@ import {
     editItem,
     clearCollectionId,
 } from '../../Slices/editItemSlice'
+import { FaX } from 'react-icons/fa6'
 
 export default function EditItemForm() {
     const dispatch = useDispatch()
@@ -61,12 +62,13 @@ export default function EditItemForm() {
                 className={styles.close}
                 aria-label="Close add item"
             >
-                X
+                <FaX />
             </button>
             <h2>Edit your Animal</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
-                    Name
+                    Name{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="name"
@@ -78,7 +80,8 @@ export default function EditItemForm() {
                     />
                 </label>
                 <label className={styles.label}>
-                    Description
+                    Description{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <textarea
                         type="text"
                         name="description"
@@ -99,21 +102,25 @@ export default function EditItemForm() {
                         value={formData.image_url}
                     />
                 </label>
-                <select
-                    className={styles.select}
-                    name="classification_id"
-                    aria-label="select classification"
-                    required
-                    onChange={handleChange}
-                    value={formData.classification_id}
-                >
-                    <option value="">Select Classification</option>
-                    <option value="3">Mammal</option>
-                    <option value="2">Bird</option>
-                    <option value="1">Reptile</option>
-                    <option value="5">Amphibian</option>
-                    <option value="4">Fish</option>
-                </select>
+                <label htmlFor="classification_id" className={styles.label}>
+                    Classification{' '}
+                    <span className={styles.requiredLabel}>(Required)</span>
+                    <select
+                        className={styles.select}
+                        name="classification_id"
+                        aria-label="select classification"
+                        required
+                        onChange={handleChange}
+                        value={formData.classification_id}
+                    >
+                        <option value="">Select Classification</option>
+                        <option value="3">Mammal</option>
+                        <option value="2">Bird</option>
+                        <option value="1">Reptile</option>
+                        <option value="5">Amphibian</option>
+                        <option value="4">Fish</option>
+                    </select>
+                </label>
 
                 <button type="submit" className={styles.button}>
                     UPDATE ANIMAL

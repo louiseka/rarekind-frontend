@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { closePopup } from '../../Slices/popupSlice'
 import { useState, useEffect } from 'react'
 import { login } from '../../Slices/authSlice'
+import { FaX } from 'react-icons/fa6'
 
 function LoginForm() {
     const dispatch = useDispatch()
@@ -30,7 +31,6 @@ function LoginForm() {
         } catch (err) {
             console.error('Login failed:', err)
         }
-        console.log('Status:', status)
     }
 
     return (
@@ -40,12 +40,13 @@ function LoginForm() {
                 className={styles.close}
                 aria-label="Close Login"
             >
-                X
+                <FaX />
             </button>
             <h2>Log in</h2>
             <form className={styles.form} onSubmit={handleSubmit}>
                 <label className={styles.label}>
                     Email
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="text"
                         name="email"
@@ -58,6 +59,7 @@ function LoginForm() {
                 </label>
                 <label className={styles.label}>
                     Password
+                    <span className={styles.requiredLabel}>(Required)</span>
                     <input
                         type="password"
                         name="password"

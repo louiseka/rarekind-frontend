@@ -3,11 +3,11 @@ import styles from './SiteNav.module.css'
 import { useDispatch } from 'react-redux'
 import { openPopup } from '../../Slices/popupSlice'
 import { useSelector } from 'react-redux'
+import { FaPlus } from 'react-icons/fa6'
 
 function SiteNav() {
     const dispatch = useDispatch()
     const location = useLocation()
-    const collectionName = useSelector((state) => state.navbar.collectionName)
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn)
 
     const isAllCollections =
@@ -41,17 +41,6 @@ function SiteNav() {
                         {navLink.label}
                     </NavLink>
                 ))}
-                {/* {collectionName && (
-                    <NavLink
-                        to={location.pathname}
-                        key={location.pathname}
-                        className={({ isActive }) =>
-                            isActive ? styles.activeLink : styles.inactiveLink
-                        }
-                    >
-                        {collectionName}
-                    </NavLink>
-                )} */}
             </nav>
             {(location.pathname === '/allcollections' ||
                 location.pathname === '/mycollections') && (
@@ -59,7 +48,7 @@ function SiteNav() {
                     className={styles.newCollectionButton}
                     onClick={() => dispatch(openPopup('newcollection'))}
                 >
-                    + NEW COLLECTION
+                    <FaPlus /> NEW COLLECTION
                 </button>
             )}
         </div>
