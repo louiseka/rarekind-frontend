@@ -7,7 +7,7 @@ export default function AddItems() {
         <section className={styles.wrapper}>
             <div className={styles.noItemsContainer}>
                 <FaInbox className={styles.inboxIcon} />
-                <p className={styles.textBold}>No items added, yet</p>
+                <p className={styles.textBold}>No animals added, yet</p>
                 <p className={styles.textLight}>
                     Would you like to add one now?
                 </p>
