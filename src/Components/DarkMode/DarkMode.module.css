@@ -2,7 +2,6 @@
 
 /* The switch - the box around the slider */
 .switch {
-    margin-left: 60%;
     font-size: 17px;
     position: relative;
     display: inline-block;
@@ -28,7 +27,7 @@
     bottom: 0;
     background-color: var(--color-background-feature);
     transition: 0.5s;
-    border-radius: 30px;    
+    border-radius: 30px;
 }
 
 .slider:before {

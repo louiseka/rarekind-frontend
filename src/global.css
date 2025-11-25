@@ -13,7 +13,7 @@ html {
 /* theme overrides */
 
 html.dark-mode {
-    --color-primary: #ebd516; /*active link colour too*/
+    --color-primary: #fcc323; /*active link colour too*/
     --color-text-red: #e30022; /*for errors or deletion*/
     --color-text-light-gray: #e1e2e2;
     --color-text-mid-gray: #8c8d8f;
@@ -27,22 +27,24 @@ html.dark-mode {
     --color-loading-spinner-quaternary: rgba(54, 255, 4, 0.7);
     --color-loading-spinner-quinary: rgba(255, 251, 7, 0.6);
     --color-loading-spinner-senary: rgba(255, 17, 0, 0.5);
+    --color-card-hover: #3a3a40;
 }
 
 html.light-mode {
-    --color-primary: #0066ff;
+    --color-primary: #16701b;
     --color-text-red: #e30022;
-    --color-text-light-gray: #a6a6a6;
+    --color-text-light-gray: #25262c;
     --color-text-mid-gray: #737373;
     --color-text-dark-gray: #5e5e5e;
     --color-background-black: #f2f2f2;
-    --color-background-dark: #e2e7f2;
-    --color-background-feature: #c1dbfb;
-    --color-loading-spinner-secondary: rgba(0, 132, 255, 0.9);
+    --color-background-dark: #e0eed7;
+    --color-background-feature: #a0c87f;
+    --color-loading-spinner-secondary: rgba(22, 112, 27, 1);
     --color-loading-spinner-tertiary: rgba(255, 24, 24, 0.8);
     --color-loading-spinner-quaternary: rgba(125, 125, 125, 0.7);
-    --color-loading-spinner-quinary: rgba(7, 205, 255, 0.6);
+    --color-loading-spinner-quinary: rgba(252, 195, 35, 1);
     --color-loading-spinner-senary: rgba(255, 17, 0, 0.5);
+    --color-card-hover: #92b86f;
 }
 
 :root {
@@ -100,19 +102,19 @@ p {
 }
 
 .tagReptile {
-    background-color: rgb(0, 193, 0);
+    background-color: #00b500;
 }
 .tagMammal {
-    background-color: rgb(216, 40, 40);
+    background-color: #d00023;
 }
 
 .tagFish {
-    background-color: rgb(35, 35, 239);
+    background-color: #00d0ad;
 }
 
 .tagAmphibian {
-    background-color: rgb(231, 12, 231);
+    background-color: #c000c8;
 }
 .tagBird {
-    background-color: rgb(136, 136, 26);
+    background-color: #f07623;
 }
