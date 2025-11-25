@@ -8,7 +8,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 4px;
-    padding: 20px 40px 40px 40px; 
+    padding: 20px 40px 40px 40px;
 }
 
 .close {
@@ -42,7 +42,7 @@ h2 {
     padding: 8px;
     font-size: 1rem;
     background: var(--color-background-black);
-    border: 1px solid var(--color-text-mid-gray);
+    border: none;
     border-radius: 4px;
     margin: 10px auto;
 }
@@ -53,7 +53,7 @@ h2 {
     padding: 8px;
     font-size: 1rem;
     background: var(--color-background-black);
-    border: 1px solid var(--color-text-mid-gray);
+    border: none;
     border-radius: 4px;
     margin: 10px auto;
 }
@@ -61,10 +61,10 @@ h2 {
 .passwordInput {
     color: var(--color-text-light-gray);
     width: 100%;
-    padding:  16px 8px 16px;
+    padding: 16px 8px 16px;
     font-size: 1rem;
     background: var(--color-background-black);
-    border: 1px solid var(--color-text-mid-gray);
+    border: none;
     border-radius: 4px;
     margin: 10px auto;
 }
