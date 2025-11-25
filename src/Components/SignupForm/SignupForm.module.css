@@ -8,14 +8,14 @@
     justify-content: center;
     align-items: center;
     border-radius: var(--border-radius-s);
-    padding: 20px 40px 40px;
+    padding: 20px;
 }
 
 .close {
-    margin-left: 100%;
+    margin-left: 95%;
     top: 10px;
     right: 10px;
-    font-size: 2rem;
+    font-size: 1.8rem;
     color: var(--color-text-light-gray);
     background: none;
     border: none;
