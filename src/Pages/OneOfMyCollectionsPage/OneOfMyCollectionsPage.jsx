@@ -21,12 +21,12 @@ function OneOfMyCollectionsPage() {
     const items = useSelector((state) => state.items.items)
     const itemsStatus = useSelector((state) => state.items.status)
     const error = useSelector((state) => state.items.error)
-    const { id } = useParams()
+    const { collectionId } = useParams()
     const status = useSelector((state) => state.collections.status)
     const collections = useSelector((state) => state.collections.items)
     const user = useSelector((state) => state.auth.user)?.id
     const collectionToShow = collections.find(
-        (c) => String(c.id) === String(id)
+        (c) => String(c.id) === String(collectionId)
     )
 
     useEffect(() => {
@@ -36,10 +36,10 @@ function OneOfMyCollectionsPage() {
     }, [dispatch, status])
 
     useEffect(() => {
-        if (id) {
-            dispatch(fetchItemsByCollectionId(id))
+        if (collectionId) {
+            dispatch(fetchItemsByCollectionId(collectionId))
         }
-    }, [dispatch, id])
+    }, [dispatch, collectionId])
 
     useEffect(() => {
         if (collectionToShow) {

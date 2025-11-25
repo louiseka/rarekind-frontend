@@ -9,14 +9,9 @@
 .footerLink {
     display: inline-block;
     color: var(--color-primary);
-    background-color: transparent;
-    border: none;
     padding: 5px;
-    margin-left: 5px;
-    margin-top: 5px;
-    font-family: "lato", sans-serif;
-    margin: 5px;
     font-family: 'lato', sans-serif;
+    margin: 5px;
     font-weight: var(--font-weight-bold);
     cursor: pointer;
     text-decoration: none;
@@ -30,19 +25,13 @@
 .footerSubLink {
     display: inline-block;
     color: var(--color-text-light-gray);
-    background-color: transparent;
-    border: none;
     padding: 5px;
-    margin-left: 5px;
-    margin-top: 5px;
-    font-family: "lato", sans-serif;
-    margin: 5px;
     font-family: 'lato', sans-serif;
+    margin: 5px;
     font-weight: var(--font-weight-bold);
     font-size: var(--font-size-small);
     cursor: pointer;
     text-decoration: none;
-    font-size: var(--font-size-small);
 }
 
 .footerSubLink:hover {

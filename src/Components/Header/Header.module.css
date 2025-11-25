@@ -27,7 +27,6 @@
 .userButtons {
     padding: 0px 5px 10px 5px;
     width: 150px;
-    text-align: right;
 }
 
 .userButton {
@@ -53,10 +52,7 @@
     text-align: right;
 }
 
-
-
 @media (min-width: 768px) {
-   
     .logo {
         height: 100px;
     }
@@ -65,5 +61,4 @@
         margin-top: 20px;
         margin-right: 10px;
     }
-
 }

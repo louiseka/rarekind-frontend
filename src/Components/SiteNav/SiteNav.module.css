@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column-reverse;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     margin-top: 20px;
 }
 
@@ -12,6 +12,7 @@
     display: flex;
     flex-direction: row;
     margin: 1em 0;
+    padding: 0 0 0 1.5em;
 }
 
 .activeLink {
@@ -21,6 +22,7 @@
     font-weight: var(--font-weight-bold);
     cursor: pointer;
     border-bottom: 2px solid;
+    font-size: 1rem;
 }
 
 .inactiveLink {
@@ -32,6 +34,7 @@
     cursor: pointer;
     text-decoration: none;
     font-size: var(--font-size-body);
+    font-size: 1rem;
 }
 .inactiveLink:hover {
     color: var(--color-primary);
@@ -65,9 +68,14 @@
         padding-top: 0;
         gap: 20px;
         margin: 2em 4em 0;
+        padding: 0;
     }
     .newCollectionButton {
         width: auto;
         min-width: 200px;
+    }
+    .activeLink,
+    .inactiveLink {
+        font-size: 1.2rem;
     }
 }

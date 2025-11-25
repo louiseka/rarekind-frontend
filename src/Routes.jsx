@@ -28,16 +28,20 @@ const routes = [
                 element: <ProtectedRoutes element={<MyCollections />} />,
             },
             {
-                path: 'mycollections/:id',
+                path: 'mycollections/:collectionId',
                 element: <ProtectedRoutes element={<OneOfMyCollections />} />,
             },
             {
-                path: 'collection/:id',
+                path: 'collection/:collectionId',
                 element: <OneOfMyCollections />,
             },
             {
                 path: '/user/:id',
                 element: <UserCollectionsPage />,
+            },
+            {
+                path: 'user/:id/collection/:collectionId',
+                element: <OneOfMyCollections />,
             },
         ],
     },
