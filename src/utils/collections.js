@@ -20,6 +20,13 @@ export function searchCollectionsByQuery(collections, query) {
     )
 }
 
+export function searchUsersByQuery(users, query) {
+    if (!query.trim()) return users
+    return users.filter((user) =>
+        user.name?.toLowerCase().includes(query.toLowerCase())
+    )
+}
+
 export function getTagColorClass(tag) {
     const tagLower = tag.toLowerCase()
     if (tagLower.includes('bird')) return 'tagBird'
