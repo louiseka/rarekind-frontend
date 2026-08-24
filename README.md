@@ -6,10 +6,10 @@
 ![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Live Project
-🌐 **View Live Site:** [RareKind Frontend](https://rarekind-frontend.vercel.app/)  
+ **View Live Site:** [RareKind Frontend](https://rarekind-frontend.vercel.app/)  
 
 ## Backend API
-🔗 **Backend API Repository / URL:** https://github.com/technative-academy/rarekind-backend
+ **Backend API Repository / URL:** https://github.com/technative-academy/rarekind-backend
 
 ## Project Overview
 **RareKind** is a frontend **React** application that helps users browse and manage collections and items. Users can explore public collections, create and edit their own collections, and manage items within those collections.  
@@ -53,7 +53,7 @@ Follow these steps to set up RareKind on your local machine:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/rarekind-frontend.git
+git clone https://github.com/louiseka/rarekind-frontend.git
 
 # Navigate into the project directory
 cd rarekind-frontend
