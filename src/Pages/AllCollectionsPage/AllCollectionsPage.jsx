@@ -38,7 +38,7 @@ export default function AllCollectionsPage() {
         }
     }, [dispatch, status])
 
-     useEffect(() => {
+    useEffect(() => {
         if (usersStatus === 'idle') {
             dispatch(fetchUsers())
         }
