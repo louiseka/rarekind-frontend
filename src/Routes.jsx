@@ -3,7 +3,7 @@ import Users from './Pages/UsersPage/UsersPage'
 import AllCollections from './Pages/AllCollectionsPage/AllCollectionsPage'
 import MyCollections from './Pages/MyCollectionsPage/MyCollectionsPage'
 import OneOfMyCollections from './Pages/OneOfMyCollectionsPage/OneOfMyCollectionsPage'
-import ProtectedRoutes from '../utils/ProtectedRoutes'
+import ProtectedRoutes from './utils/ProtectedRoutes'
 import UserCollectionsPage from './Pages/UserCollectionsPage/UserCollectionsPage'
 
 const routes = [
