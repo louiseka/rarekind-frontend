@@ -6,7 +6,7 @@
 ![CSS Modules](https://img.shields.io/badge/CSS_Modules-000000?style=for-the-badge&logo=css3&logoColor=white)
 
 ## Live Project
- **View Live Site:** [RareKind Frontend](https://rarekind-frontend.vercel.app/)  
+ **View Live Site:** [RareKind Frontend](https://rarekind-frontend-eight.vercel.app/)  
 
 ## Backend API
  **Backend API Repository / URL:** https://github.com/technative-academy/rarekind-backend
